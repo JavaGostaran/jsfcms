@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateContentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateContentLabel_header}" for="header" />
+                    <h:inputText id="header" value="#{contentController.selected.header}" title="#{bundle.CreateContentTitle_header}" />
+                    <h:outputLabel value="#{bundle.CreateContentLabel_title}" for="title" />
+                    <h:inputText id="title" value="#{contentController.selected.title}" title="#{bundle.CreateContentTitle_title}" />
+                    <h:outputLabel value="#{bundle.CreateContentLabel_body}" for="body" />
+                    <h:inputText id="body" value="#{contentController.selected.body}" title="#{bundle.CreateContentTitle_body}" />
+                    <h:outputLabel value="#{bundle.CreateContentLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{contentController.selected.id}" title="#{bundle.CreateContentTitle_id}" required="true" requiredMessage="#{bundle.CreateContentRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateContentLabel_file}" for="file" />
+                    <h:inputTextarea rows="4" cols="30" id="file" value="#{contentController.selected.file}" title="#{bundle.CreateContentTitle_file}" />
+                    <h:outputLabel value="#{bundle.CreateContentLabel_typePageID}" for="typePageID" />
+                    <h:selectOneMenu id="typePageID" value="#{contentController.selected.typePageID}" title="#{bundle.CreateContentTitle_typePageID}" required="true" requiredMessage="#{bundle.CreateContentRequiredMessage_typePageID}">
+                        <f:selectItems value="#{typePageController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateContentLabel_categaryID}" for="categaryID" />
+                    <h:selectOneMenu id="categaryID" value="#{contentController.selected.categaryID}" title="#{bundle.CreateContentTitle_categaryID}" required="true" requiredMessage="#{bundle.CreateContentRequiredMessage_categaryID}">
+                        <f:selectItems value="#{categaryController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{contentController.create}" value="#{bundle.CreateContentSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{contentController.prepareList}" value="#{bundle.CreateContentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateContentIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

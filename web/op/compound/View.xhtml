@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCompoundTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCompoundLabel_id}"/>
+                    <h:outputText value="#{compoundController.selected.id}" title="#{bundle.ViewCompoundTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewCompoundLabel_idc}"/>
+                    <h:outputText value="#{compoundController.selected.idc}" title="#{bundle.ViewCompoundTitle_idc}"/>
+                    <h:outputText value="#{bundle.ViewCompoundLabel_rankContent}"/>
+                    <h:outputText value="#{compoundController.selected.rankContent}" title="#{bundle.ViewCompoundTitle_rankContent}"/>
+                    <h:outputText value="#{bundle.ViewCompoundLabel_contentID}"/>
+                    <h:outputText value="#{compoundController.selected.contentID}" title="#{bundle.ViewCompoundTitle_contentID}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{compoundController.destroyAndView}" value="#{bundle.ViewCompoundDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCompoundEditLink}"/>
+                <br />
+                <h:commandLink action="#{compoundController.prepareCreate}" value="#{bundle.ViewCompoundCreateLink}" />
+                <br />
+                <h:commandLink action="#{compoundController.prepareList}" value="#{bundle.ViewCompoundShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCompoundIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

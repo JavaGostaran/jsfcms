@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta charset="utf-8" />
+        <title>Login</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+        <link href="res/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="res/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+        <link href="res/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="res/css/style.css" rel="stylesheet" />
+        <link href="res/css/style-responsive.css" rel="stylesheet" />
+        <link href="res/css/style-default.css" rel="stylesheet" id="style_color" />
+    </h:head>
+    <!-- END HEAD -->
+    <!-- BEGIN BODY -->
+    <h:body>
+        <div class="lock-header">
+            <!-- BEGIN LOGO -->
+            <a class="center" id="logo" href="index.html">
+                <img class="center" alt="logo" src="res/img/logo.png"/>
+            </a>
+            <!-- END LOGO -->
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <form action="../j_spring_security_check" method="post" class="login">
+            
+            <p class="form-row form-row-wide">
+                <label for="username" style="float: right;font-family: 'P Yekan', tahoma, Arial!important;">
+                    username
+                    <span class="required">*</span></label>
+                <input type="text" id="j_username" name="j_username" class="input-text" />
+            </p>
+            
+            <p class="form-row form-row-wide">
+                <label for="password" style="float: right;font-family: 'P Yekan', tahoma, Arial!important;">
+                    password
+                    <span class="required">*</span></label>
+                <input class="input-text" type="password" id="j_password" name="j_password" />
+            </p>
+            
+            <div class="clear"></div>
+
+            <p class="form-row" style="float: left">
+                <input type="submit" class="button active" name="login" value="ورود" style="font-family: 'B Yekan', tahoma, Arial!important;" />
+            </p>
+        
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h:form >
+
+            #{userController.userIntered}
+            <div class="login-wrap">
+
+
+                <div class="metro double-size green">
+
+                    <div class="input-append lock-input">
+                        <h:inputText id="username" value="#{userController.selectedNew.username}" class=""/>
+                    </div>
+                </div>
+
+
+                <div class="metro double-size yellow">
+                    <div class="input-append lock-input">
+                        <h:inputText id="password" value="#{userController.selectedNew.password}" class="" />
+                    </div>
+                </div>
+
+
+
+
+                <div class="metro single-size terques login">
+                    <h:commandLink value="ورود"  action="#{userController.update1}" class="btn login-btn"/>
+
+                </div>
+
+                <h:panelGrid rendered="#{userController.userIntered == 1}" >
+                    <h2>خطا</h2>
+                </h:panelGrid>
+
+            </div>
+        </h:form>
+    </h:body>
+    <!-- END BODY -->
+
+</html>

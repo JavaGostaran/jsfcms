@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="template/themplate#{settingController.theme()}-#{settingsController.template_type}.xhtml">
+
+        <!--for conventional-->
+        <ui:define name="body2">
+            <h:form rendered="#{contentController.searching() == null and categaryController.selected.information != 'blog' and categaryController.selected.parentID.information != 'blog' and contenthasTagController.list.size() == 0}">
+                 <!-- contenthasTagController.list.size() == 0 یعنی لیستی که شامل تگ های کلیک شده است، خالی است و این یعنی روی تگی کلیک نشده است --> 
+                <header class="panel-heading">
+                    <h4 style="font-family: b nazanin"> #{contentController.selected.header}
+                    </h4>
+                </header>
+            </h:form>
+            <div class="panel-body">
+
+
+
+                <h:form rendered="#{contentController.searching() == null and categaryController.selected.information != 'blog' and categaryController.selected.parentID.information != 'blog' and contenthasTagController.list.size() == 0}">
+                    <!-- contenthasTagController.list.size() == 0 یعنی لیستی که شامل تگ های کلیک شده است، خالی است و این یعنی روی تگی کلیک نشده است --> 
+                    <div> 
+
+   
+                        
+                        <h:outputText value="در این دسته بندی هنوز صفحه ای پویا درج نشده است." rendered="#{contentController.selected.id == null and settingsController.selected.id == 1}"/>
+                        <h:outputText style="float: left" value="There is no page in this category yet." rendered="#{contentController.selected.id == null and settingsController.selected.id == 2}"/>
+                        <h:outputText style="float: left" value="No existe una página en esta categoria." rendered="#{contentController.selected.id == null and settingsController.selected.id == 3}"/>
+
+                        <h:panelGrid rendered="#{contentController.selected.file != 'فایلی آپلود نشده' and contentController.selected.id != null}">
+                            <span class="photo" ><img src="../images/#{contentController.selected.file}" width="500" height="250"/></span>
+                        </h:panelGrid>
+                        
+                        <!--
+                        <h:outputText value="محتوای عکس برای نمایش وجود ندارد." rendered="#{contentController.selected.file == 'فایلی آپلود نشده' and contentController.selected.typePageID.type != 'ترکیبی'}"/>
+                        -->
+                        
+                        <h:outputText escape="false" value=" #{contentController.selected.body} "  />
+                        
+                        <!--compound list-->
+                        <ui:repeat value="#{compoundController.getItems2(contentController.selected.id)}" var="item">
+                            <p>
+                                <b><h5 style="font-family: b nazanin"><h:outputText  value=" #{contentController.getContent1(item.contentID.id).header}" rendered="#{contentController.getContent1(item.contentID.id).header != null}"  /></h5></b>
+                                
+                                <h:outputText escape="false" value=" #{contentController.getContent1(item.contentID.id).body} " rendered="#{contentController.getContent1(item.contentID.id).body != null}" />
+                                <h:panelGrid rendered="#{contentController.getContent1(item.contentID.id).file != 'فایلی آپلود نشده' and contentController.getContent1(item.contentID.id).file != null }">
+                                    <img src="../images/#{contentController.getContent1(item.contentID.id).file}" width="500" height="250"/>
+                                </h:panelGrid>
+                            </p>
+                        </ui:repeat>
+                        
+                        <!--tag list-->
+                       
+                        <br />
+                        <h:outputText value="برچسب ها:" />
+                        <h5>
+                            
+                        <ui:repeat value="#{contenthasTagController.getItemsList(contentController.selected.id)}" var="im">
+                            <span class="badge bg-info">
+                                <a style="font-family: b nazanin" href="#{request.contextPath}/faces/ui/Index.xhtml?tid=#{im.contenthasTagPK.tagID}&amp;cmsId=#{userController.selected.cmsID.id}" class=""> #{tagController.getTag(im.contenthasTagPK.tagID).tagName}  </a>
+                            </span>
+                        </ui:repeat>
+                        </h5>
+                        <br />
+                        
+                        <br />
+                        <h6><h:outputText rendered="#{settingsController.lang_ID == 1}" value="#{settingsController.selected.siteWriterPost} ((#{contentController.selected.writer})) #{settingsController.selected.siteDatePost} ((#{contentController.persiandate(contentController.selected.date)}))"  /></h6>
+                        <h6><h:outputText style="float: left" dir="ltr" rendered="#{settingsController.lang_ID == 2}" value="#{settingsController.selected.siteWriterPost} ((#{contentController.selected.writer})) #{settingsController.selected.siteDatePost} ((#{contentController.selected.date}))"  /></h6>
+                        <h6><h:outputText style="float: left" dir="ltr" rendered="#{settingsController.lang_ID == 3}" value="#{settingsController.selected.siteWriterPost} ((#{contentController.selected.writer})) #{settingsController.selected.siteDatePost} ((#{contentController.selected.date}))"  /></h6>
+                        <br />
+
+
+                    </div>
+                </h:form>
+
+
+                <h:form rendered="#{userController.selected.username ==null and contentController.searching() == null and categaryController.selected.information != 'blog' and categaryController.selected.parentID.information != 'blog' and contenthasTagController.list.size() == 0}">
+                    <!-- contenthasTagController.list.size() == 0 یعنی لیستی که شامل تگ های کلیک شده است، خالی است و این یعنی روی تگی کلیک نشده است --> 
+                    <br />
+                    <br />
+                    #{settingsController.selected.siteCommentMessageAlert}
+                </h:form>
+                    
+                
+                
+                <h:form id="commentForm" rendered="#{contentController.selected.id != null and userController.selected.username !=null and contentController.searching() == null and categaryController.selected.information != 'blog' and categaryController.selected.parentID.information != 'blog' and contenthasTagController.list.size() == 0}">
+                   <!-- contenthasTagController.list.size() == 0 یعنی لیستی که شامل تگ های کلیک شده است، خالی است و این یعنی روی تگی کلیک نشده است --> 
+                
+                
+                   <div>  
+                        <br />
+                        <h5>#{settingsController.selected.siteCommentSend}</h5>
+
+                        <h:inputTextarea id="body" value="#{commentController.commentTemp}" class="form-control" rows="5" cols="60"></h:inputTextarea>
+                        #{commentController.commentTemp}
+                        #{commentController.getCmsControllerAndFindOnItByAnIdToUseForCreate(cmsController,2)}
+                        #{commentController.selected.setVisibility(true)}
+                        
+                     
+                        <h:commandButton class="btn btn-success" value="#{settingsController.selected.siteCommentSendButton}" >
+                            <f:ajax listener="#{commentController.create1(contentController,userController,userController.selected.id)}" render="commentForm" />
+                        </h:commandButton>
+                    </div>
+
+                </h:form> 
+                
+                <h:form rendered="#{commentController.ind == 1 and contentController.searching() == null and categaryController.selected.information != 'blog' and categaryController.selected.parentID.information != 'blog' and contenthasTagController.list.size() == 0}">
+                    <!-- contenthasTagController.list.size() == 0 یعنی لیستی که شامل تگ های کلیک شده است، خالی است و این یعنی روی تگی کلیک نشده است --> 
+                    #{settingsController.selected.siteCommentMessageSuccess}
+                    
+
+                </h:form> 
+                
+                <h:form rendered="#{contentController.selected.id != null and contentController.searching() == null and categaryController.selected.information != 'blog' and categaryController.selected.parentID.information != 'blog' and contenthasTagController.list.size() == 0}">
+                    <!-- contenthasTagController.list.size() == 0 یعنی لیستی که شامل تگ های کلیک شده است، خالی است و این یعنی روی تگی کلیک نشده است --> 
+                    <br/><br/>
+                    #{settingsController.selected.siteCommentTitle}
+                    <br/>
+                    <table class="table table-striped table-bordered" id="sample_1">
+                        <thead >
+                            <tr >
+                                <th  style="text-align: #{settingsController.right}">#{settingsController.selected.siteCommentSender}</th>
+                                <th  style="text-align: #{settingsController.right}">#{settingsController.selected.siteCommentSended}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ui:repeat value="#{contentController.selected.commentList}" var="item">
+                                <tr>
+                                    <th  style="text-align: #{settingsController.right}">
+                                        #{item.userID.name}
+                                    </th>
+                                    <th  style="text-align: #{settingsController.right}">
+                                        #{item.comment}
+                                    </th>
+
+                                </tr>
+                            </ui:repeat>
+
+                        </tbody>
+                    </table>
+                </h:form>
+            </div>     
+
+
+        </ui:define>
+        
+        <!--for search-->
+        <ui:define name="body3">
+            <!-- contenthasTagController.list.size() == 0 یعنی لیستی که شامل تگ های کلیک شده است، خالی است و این یعنی روی تگی کلیک نشده است --> 
+            <!--<h:form rendered="#{contentController.searching() != null and categaryController.selected.information != 'blog' and categaryController.selected.parentID.information != 'blog' and contenthasTagController.list.size() == 0}"> -->
+            <!--sharte bala ke comment shode va jaye sharte payin bud, baes mishod ke natayeje search hich vaght dar weblog aher nashavad-->
+            <h:form rendered="#{contentController.searching() != null  and contenthasTagController.list.size() == 0}">
+                <div class="col-lg-12">
+                    <div class="alert alert-info fade in">
+                        <h5 style="font-family: b nazanin"><b>#{contentController.searchWord}:</b></h5>
+                        <ui:repeat value="#{contentController.searching()}" var="item"  > 
+                            #{contentController.setContentSearch(item.get("id"))}
+
+                            <h:panelGrid rendered="#{(contentController.contentSearch.typePageID.type == 'متن' or contentController.contentSearch.typePageID.type == 'ترکیبی' or contentController.contentSearch.typePageID.type == 'بلاگ') and contentController.contentSearch.visibility == true}">
+                                #{contentController.setHrefValue(item.get("address"))}
+                                <a style="font-family: b nazanin" href="#{contentController.hrefValue}"> #{item.get("filename")}  </a>
+                                <br />
+                            </h:panelGrid>
+                        
+                        </ui:repeat>
+                        #{contentController.setSearchWord(null)}
+
+                    </div>
+                </div>
+            </h:form>
+            <br />
+        </ui:define>
+        
+        
+        <!--for blog-->
+        <ui:define name="body4">
+            <h:form rendered="#{(categaryController.selected.information == 'blog' or categaryController.selected.parentID.information == 'blog') and contentController.selected.typePageID.type != 'بلاگ' and contenthasTagController.list.size() == 0 and contentController.searching() == null}">
+                
+                #{contentController.getDateAndSetNewDate()}
+                
+                <!-- contenthasTagController.list.size() == 0 یعنی لیستی که شامل تگ های کلیک شده است، خالی است و این یعنی روی تگی کلیک نشده است --> 
+                <ui:repeat rendered="#{contentController.contentBlogChooseByDate.size() != 0}" value="#{contentController.contentBlogChooseByDate}" var="item" varStatus="st">
+                <!-- dar surati ejra shavad ke karbar ruye yek tarikhe blog click karde bashad va size liste zkr shode bishtar az 0 shavad -->
+                    <!--revenue start-->
+                
+                <div class="panel-body profile-activity ">
+                    <div class="col-lg-12">
+                        <div class="revenue-head green">
+                            <h3 style="text-align: #{settingsController.right};font-family: b nazanin">#{item.header}</h3>
+                            <span  class="rev-combo pull-#{settingsController.right}">
+                                <h3 style="font-family: b nazanin">#{item.categaryID.name}</h3>
+                            </span>
+                            <span class="rev-combo pull-#{settingsController.left}">
+                                <h3 style="font-family: b nazanin">تعداد نظرات</h3>
+                            </span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12 text-center">
+                                    <p>
+                                        <h:outputText  escape="false" value="#{item.body}"/>
+                                        <br />
+                                        <h:outputText style="float: #{settingsController.right}" value="برچسب ها : " />
+                                        <h7>
+                                            <ui:repeat  value="#{contenthasTagController.getItemsList(item.id)}" var="im">
+                                                <span style="float: #{settingsController.right}" >
+                                                    <a style="float: #{settingsController.right}" href="#{request.contextPath}/faces/ui/Index.xhtml?tid=#{im.contenthasTagPK.tagID}&amp;cmsId=#{userController.selected.cmsID.id}" class=""> #{tagController.getTag(im.contenthasTagPK.tagID).tagName}-  </a>
+                                                </span>
+                                            </ui:repeat>
+                                        </h7>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer revenue-foot text-center">
+                            <ul>
+                                <br />
+                                    <h:outputText style="font-family: b nazanin;font-size: small"  rendered="#{settingsController.lang_ID == 1}" value="#{settingsController.selected.siteWriterPost} ((#{item.writer})) #{settingsController.selected.siteDatePost} ((#{contentController.persiandate(item.date)}))"  />
+                                    <h:outputText style="font-family: b nazanin;font-size: small"  rendered="#{settingsController.lang_ID == 2}" value="#{settingsController.selected.siteWriterPost} ((#{item.writer})) #{settingsController.selected.siteDatePost} ((#{item.date}))"  />
+                                    <h:outputText style="font-family: b nazanin;font-size: small"  rendered="#{settingsController.lang_ID == 3}" value="#{settingsController.selected.siteWriterPost} ((#{item.writer})) #{settingsController.selected.siteDatePost} ((#{item.date}))"  />
+                                    <br />
+                                    <br />
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--revenue end-->
+                </ui:repeat>
+                
+                
+                <!-- baraye vaghti ke karbar ruye tarikhe blog click nakarde va size liste zekr shode 0 ast-->
+                <ui:repeat rendered="#{contentController.contentBlogChooseByDate.size() == 0}" value="#{contentController.getItemsInIndexPageInBlog(categaryController.selected.id,categaryController)}" var="item" varStatus="st">
+                <!--revenue start-->
+                <div class="panel-body profile-activity ">
+                    <div class="col-lg-12">
+                        <div class="revenue-head">
+                            <h3 style="text-align: #{settingsController.right};font-family: b nazanin">#{item.header}</h3>
+                            <span  class="rev-combo pull-#{settingsController.right}">
+                                <h3 style="font-family: b nazanin">#{item.categaryID.name}</h3>
+                            </span>
+                            <span class="rev-combo pull-#{settingsController.left}">
+                                <h3 style="font-family: b nazanin">تعداد نظرات</h3>
+                            </span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12 text-center">
+                                    <p>
+                                        <h:outputText  escape="false" value="#{item.body}"/>
+                                        <br />
+                                        <h:outputText style="float: #{settingsController.right}" value="برچسب ها : " />
+                                        <h7>
+                                            <ui:repeat  value="#{contenthasTagController.getItemsList(item.id)}" var="im">
+                                                <a style="float: #{settingsController.right}" href="#{request.contextPath}/faces/ui/Index.xhtml?tid=#{im.contenthasTagPK.tagID}&amp;cmsId=#{userController.selected.cmsID.id}" class=""> #{tagController.getTag(im.contenthasTagPK.tagID).tagName}-  </a>
+                                            </ui:repeat>
+                                        </h7>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer revenue-foot text-center">
+                            <ul>
+                                <br />
+                                    <h:outputText style="font-family: b nazanin;font-size: small"  rendered="#{settingsController.lang_ID == 1}" value="#{settingsController.selected.siteWriterPost} ((#{item.writer})) #{settingsController.selected.siteDatePost} ((#{contentController.persiandate(item.date)}))"  />
+                                    <h:outputText style="font-family: b nazanin;font-size: small"  rendered="#{settingsController.lang_ID == 2}" value="#{settingsController.selected.siteWriterPost} ((#{item.writer})) #{settingsController.selected.siteDatePost} ((#{item.date}))"  />
+                                    <h:outputText style="font-family: b nazanin;font-size: small"  rendered="#{settingsController.lang_ID == 3}" value="#{settingsController.selected.siteWriterPost} ((#{item.writer})) #{settingsController.selected.siteDatePost} ((#{item.date}))"  />
+                                    <br />
+                                    <br />
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--revenue end-->
+                </ui:repeat>
+                
+                <!-- akhare sar listi ke shamele posthaye blogi ba yek tarikhe mo'ayan ast ra 0 mikonim-->
+                              #{contentController.setContentBlogChooseByDate()}
+                
+                
+                
+                
+            </h:form>
+            <!--for blog (when click on a page that is form blog kind)-->
+            <h:form rendered="#{(categaryController.selected.information == 'blog' or categaryController.selected.parentID.information == 'blog') and contentController.selected.typePageID.type == 'بلاگ' and contenthasTagController.list.size() == 0 and contentController.searching() == null}">
+                <!-- contenthasTagController.list.size() == 0 یعنی لیستی که شامل تگ های کلیک شده است، خالی است و این یعنی روی تگی کلیک نشده است --> 
+            
+                
+                
+                
+                
+                    
+                    
+                <!--revenue start-->
+                <div class="panel-body profile-activity ">
+                    <div class="col-lg-12">
+                        <div class="revenue-head">
+                            <h3 style="text-align: #{settingsController.right};font-family: b nazanin">#{contentController.selected.header}</h3>
+                            <span  class="rev-combo pull-#{settingsController.right}">
+                                <h3 style="font-family: b nazanin">#{contentController.selected.categaryID.name}</h3>
+                            </span>
+                            <span class="rev-combo pull-#{settingsController.left}">
+                                <h3 style="font-family: b nazanin">تعداد نظرات</h3>
+                            </span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12 text-center">
+                                    <p>
+                                        <h:outputText  escape="false" value="#{contentController.selected.body}"/>
+                                        <br />
+                                        <h:outputText style="float: #{settingsController.right}" value="برچسب ها : " />
+                                        <h7>
+                                            <ui:repeat  value="#{contenthasTagController.getItemsList(contentController.selected.id)}" var="im">
+                                                <a style="float: #{settingsController.right}" href="#{request.contextPath}/faces/ui/Index.xhtml?tid=#{im.contenthasTagPK.tagID}&amp;cmsId=#{userController.selected.cmsID.id}" class=""> #{tagController.getTag(im.contenthasTagPK.tagID).tagName}-  </a>
+                                            </ui:repeat>
+                                        </h7>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer revenue-foot text-center">
+                            <ul>
+                                <br />
+                                    <h:outputText style="font-family: b nazanin;font-size: small"  rendered="#{settingsController.lang_ID == 1}" value="#{settingsController.selected.siteWriterPost} ((#{contentController.selected.writer})) #{settingsController.selected.siteDatePost} ((#{contentController.persiandate(contentController.selected.date)}))"  />
+                                    <h:outputText style="font-family: b nazanin;font-size: small"  rendered="#{settingsController.lang_ID == 2}" value="#{settingsController.selected.siteWriterPost} ((#{contentController.selected.writer})) #{settingsController.selected.siteDatePost} ((#{contentController.selected.date}))"  />
+                                    <h:outputText style="font-family: b nazanin;font-size: small"  rendered="#{settingsController.lang_ID == 3}" value="#{settingsController.selected.siteWriterPost} ((#{contentController.selected.writer})) #{settingsController.selected.siteDatePost} ((#{contentController.selected.date}))"  />
+                                    <br />
+                                    <br />
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--revenue end-->
+               
+                
+            </h:form>
+            <br />
+        </ui:define>
+
+        <!--for when click on a tag and show list of page with that tag-->
+        <ui:define name="body5">
+            <h:form rendered="#{contenthasTagController.list.size() != 0}">
+                <div class="panel-body">
+                    <h4 style="font-family: b nazanin">
+                    نتایج انتخاب تگ:
+                    </h4>
+                </div>
+                   
+                   
+                <ui:repeat value="#{contenthasTagController.list}" var="item">
+                    <header class="panel-heading">
+                    </header>
+                    <div class="panel-body">
+
+                        <h:panelGrid columns="2">
+                            <div>
+                            <h4 style="font-family: b nazanin"><a href="#{request.contextPath}/faces/ui/Index.xhtml?pid1=#{contentController.getContent(item.contenthasTagPK.contentID).id}&amp;pid=#{contentController.getContent(item.contenthasTagPK.contentID).categaryID.id}&amp;cmsId=#{userController.selected.cmsID.id}">#{contentController.getContent(item.contenthasTagPK.contentID).header}</a></h4>
+                            </div>
+                            
+                            <div>
+                               
+                        <h6 style="font-family: b nazanin">
+                        #{contenthasTagController.setTempIndex(item.contenthasTagPK.contentID)}
+                            <ui:repeat value="#{categaryController.forNavigateInTagList(contentController.getContent(contenthasTagController.tempIndex).categaryID.id)}" var="it"  > 
+                                <a style="float: #{settingsController.left}" href="#{request.contextPath}/faces/ui/Index.xhtml?pid=#{it.id}&amp;cmsId=#{userController.selected.cmsID.id}"> #{it.name}/</a>
+                            </ui:repeat>
+                            <br />
+                        </h6>
+                          </div>
+                            </h:panelGrid>
+                            <div>
+                        <h:outputText escape="false" value="#{contentController.getContent(item.contenthasTagPK.contentID).body}"></h:outputText>
+                        <!--برای وقتی که صفحه ترکیبی است-->
+                        <ui:repeat value="#{compoundController.getItems2(contentController.getContent(item.contenthasTagPK.contentID).id)}" var="item1">
+                            <p>
+                                <b><h5 style="font-family: b nazanin"><h:outputText  value=" #{contentController.getContent1(item1.contentID.id).header}" rendered="#{contentController.getContent1(item1.contentID.id).header != null}"  /></h5></b>
+                                <h:outputText escape="false" value=" #{contentController.getContent1(item1.contentID.id).body} " rendered="#{contentController.getContent1(item1.contentID.id).body != null}" />
+                                <h:panelGrid rendered="#{contentController.getContent1(item1.contentID.id).file != 'فایلی آپلود نشده' and contentController.getContent1(item1.contentID.id).file != null }">
+                                    <img src="../images/#{contentController.getContent1(item1.contentID.id).file}" width="500" height="250"/>
+                                </h:panelGrid>
+                            </p>
+                        </ui:repeat>
+                        </div>
+                        
+                    </div>
+                </ui:repeat>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

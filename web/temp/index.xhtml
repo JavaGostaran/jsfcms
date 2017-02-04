@@ -1,0 +1,11 @@
+کد حذف شده از پنل ادمین در قسمت منو
+                                <ui:repeat value="#{categaryController.menuItems0}" var="item"  > 
+                                    <li>  <a href="javascript:;" class=""> #{item.name} </a> </li>
+
+                                    <ul class="sub">
+                                        <ui:repeat value="#{item.getCategaryList()}" var="it"   > 
+                                            <li> <a href="javascript:;" class=""> #{it.name} </a> 
+                                            </li>
+                                        </ui:repeat>
+                                    </ul>
+                                </ui:repeat>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="template/themplate.xhtml">
+        <ui:define name="title">
+        </ui:define>
+        <ui:define name="body">
+            <div id="main-content">
+                <!-- BEGIN PAGE CONTAINER-->
+                <div class="container-fluid">
+                    <!-- BEGIN PAGE HEADER-->   
+
+
+
+                    <br />
+                    <ul class="breadcrumb" style="text-align: right">
+
+                        <li style="text-align: right">
+                            <span class="divider">/</span>
+                            <a href="‌Blog_C.xhtml">ایجاد دسته بندی اصلی بلاگ</a>
+
+                        </li>
+
+                        <li style="text-align: right">
+                            <span class="divider">/</span>
+                            <a href="Index.xhtml">داشبورد</a>
+
+                        </li>
+
+                    </ul> 
+
+
+                    <div dir="rtl" class="row-fluid">
+                        <div class="span12">
+                            <!-- BEGIN SAMPLE FORMPORTLET-->
+                            <div class="widget red">
+                                <div class="widget-title">
+                                    <h4><i class="icon-reorder"></i> ایجاد دسته بندی اصلی بلاگ </h4>
+                                    <span class="tools">
+                                        <a href="javascript:;" class="icon-chevron-down"></a>
+                                    </span>
+                                </div>
+                                <div  class="alert alert-block alert-danger fade in">
+                                    <h:form  class="form-horizontal">
+                                        #{categaryController.getCmsControllerAndFindOnItByAnIdToUseForCreate(cmsController,userController.selected.cmsID.id)}
+
+                                        <h:outputLabel value="نام:" />
+                                        <h:inputText id="header" value="#{categaryController.selected.name}"    class="span6 " />
+                                        <br />
+                                        
+                                        #{categaryController.selected.setParentID(categaryController.FindCategaryRoot())}
+                                        #{categaryController.selected.setInformation('blog')}
+                                        <br />
+                                        
+                                        
+                                        
+                                        <h:outputLabel value="قابلیت مشاهده:" />
+                                        <div class="controls">
+                                            <label class="checkbox">
+                                                <div class="checker" id="uniform-undefined"><span class="checked"><h:selectBooleanCheckbox value="#{categaryController.selected.visibility}" style="opacity: 10;"/></span></div> 
+                                            </label>
+                                        </div>
+                                        <br />
+
+                                        <h:commandLink action="#{categaryController.create}" class="btn btn-success" value="ایجاد"/>
+                                        <a style="float: left" class="btn btn-danger" href="Index.xhtml">بازگشت به داشبورد </a>
+                                        <div class="space5"></div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </ui:define>
+
+
+    </ui:composition>
+
+</html>

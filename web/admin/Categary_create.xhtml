@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="template/themplate.xhtml">
+        <ui:define name="title">
+        </ui:define>
+        <ui:define name="body">
+            <h:head>
+                <script language="javascript" type="text/javascript">
+            function fun(trueORFalse){
+                document.getElementById("form1:categaryID").disabled=trueORFalse;
+                document.getElementById("form1:pg").enabled=trueORFalse;
+            }
+        </script>
+            </h:head>
+            <h:body>
+            <div id="main-content">
+                <!-- BEGIN PAGE CONTAINER-->
+                <div class="container-fluid">
+                    <!-- BEGIN PAGE HEADER-->   
+
+
+
+                    <br />
+                    <ul class="breadcrumb" style="text-align: right">
+
+                        <li style="text-align: right">
+                            <span class="divider">/</span>
+                            <a href="Categary_create.xhtml">ایجاد دسته بندی</a>
+
+                        </li>
+
+                        <li style="text-align: right">
+                            <span class="divider">/</span>
+                            <a href="Index.xhtml">داشبورد</a>
+
+                        </li>
+
+                    </ul> 
+
+
+                    <div dir="rtl" class="row-fluid">
+                        <div class="span12">
+                            <!-- BEGIN SAMPLE FORMPORTLET-->
+                            <div class="widget red">
+                                <div class="widget-title">
+                                    <h4><i class="icon-reorder"></i> ایجاد دسته بندی جدید </h4>
+                                    <span class="tools">
+                                        <a href="javascript:;" class="icon-chevron-down"></a>
+                                    </span>
+                                </div>
+                                <div  class="alert alert-block alert-danger fade in">
+                                    <h:form>
+                                        #{categaryController.setBoFalse()}
+                                    </h:form>
+                                    <h:form id="form1" class="form-horizontal">
+                                        #{categaryController.getCmsControllerAndFindOnItByAnIdToUseForCreate(cmsController,userController.selected.cmsID.id)}
+
+                                        <h:outputLabel value="نام:" />
+                                        <h:inputText id="header" value="#{categaryController.selected.name}"    class="span6 " />
+                                        <br />
+                                        <br />
+                                        
+                                        <h:outputLabel value="قرارگیری در منوی اصلی:" >
+                                        <h:selectBooleanCheckbox>
+                                            <f:ajax  event="click" listener="#{categaryController.setBo()}" render=":form1"/>
+                                        </h:selectBooleanCheckbox>
+                                        </h:outputLabel>
+                                        
+                                        <br />
+                                        
+                                        <h:outputLabel value="در دسته:" />
+                                        <h:selectOneMenu disabled="#{categaryController.bo}" id="categaryID" value="#{categaryController.selected.parentID}"  required="true" >
+                                            <f:selectItems value="#{categaryController.itemsInComboBox1}" itemLabel="#{item.name}" itemValue="#{item}" var="item"/>
+                                        </h:selectOneMenu>
+                                        
+                                        #{categaryController.selected.setInformation('usual')}
+                                        <br />
+                                        
+                                        
+                                        <h:panelGrid id="pg" rendered="#{categaryController.bo}">
+                                            #{categaryController.selected.setParentID(categaryController.FindCategaryRoot())}
+                                        </h:panelGrid>
+                                        
+                                        <br />
+                                        
+                                        <h:outputLabel value="قابلیت مشاهده:" >
+                                               <h:selectBooleanCheckbox value="#{categaryController.selected.visibility}" style="opacity: 10;"/> 
+                                        </h:outputLabel>
+                                        <br />
+
+                                        <h:commandLink action="#{categaryController.create}" class="btn btn-success" value="ایجاد"/>
+                                        <a style="float: left" class="btn btn-danger" href="Index.xhtml">بازگشت به داشبورد </a>
+                                        <div class="space5"></div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+                </h:body>
+        </ui:define>
+
+
+    </ui:composition>
+
+</html>

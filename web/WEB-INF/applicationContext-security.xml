@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  - Sample namespace-based configuration
+  -
+  -->
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+    <debug />
+
+    <global-method-security pre-post-annotations="enabled" />
+    <http pattern="/portal/login.soda" security="none"/>
+
+    <http use-expressions="true">
+        <intercept-url pattern="/faces/admin/**" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/faces/time/**" access="isAuthenticated()" />
+        <!--
+             Allow all other requests. In a real application you should
+             adopt a whitelisting approach where access is not allowed by default
+          -->
+        <intercept-url pattern="/**" access="permitAll" />
+        
+        <form-login login-processing-url="/j_spring_security_check"
+			login-page="/faces/Login.xhtml"
+			default-target-url="/faces/ui/Index.xhtml"
+			authentication-failure-url="/faces/Login.xhtml" />
+        
+        <logout logout-success-url="/faces/ui/Index.xhtml" delete-cookies="JSESSIONID"/>
+        <remember-me />
+<!--
+    Uncomment to enable X509 client authentication support
+        <x509 />
+-->
+        <!-- Uncomment to limit the number of sessions a user can have -->
+       
+
+    </http>
+
+    <!--
+    Usernames/Passwords are
+        rod/koala
+        dianne/emu
+        scott/wombat
+        peter/opal
+    -->
+    <beans:bean id="encoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder"/>
+
+<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service  data-source-ref="dataSource"
+				
+				users-by-username-query="
+					select username,password, enabled 
+					from User where USERNAME=?" 
+				
+				authorities-by-username-query="
+					select u.username, ur.authority from User u, user_roles ur 
+					where u.user_roles_ID = ur.ID and u.username =?  " 
+					
+			/>
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>

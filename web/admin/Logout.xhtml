@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:f="http://java.sun.com/jsf/core"> 
+
+    <h:head>
+        <meta charset="utf-8" />
+        <title>ورود</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+        <link href="res/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="res/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+        <link href="res/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="res/css/style.css" rel="stylesheet" />
+        <link href="res/css/style-responsive.css" rel="stylesheet" />
+        <link href="res/css/style-default.css" rel="stylesheet" id="style_color" />
+    </h:head>
+    <!-- END HEAD -->
+    <!-- BEGIN BODY -->
+    <h:body class="lock">
+        <h:form>
+            #{userController.searchByusername()}
+            <h:panelGroup rendered="#{userController.selected2 eq null}">
+                <ul class="topnav navRight">
+
+
+                    <li><a href="#login_panel" data-rel="prettyPhoto[login_panel]">LOGIN</a></li>
+                </ul><!-- end topnav // right aligned -->
+            </h:panelGroup>
+            <h:panelGroup rendered="#{userController.selected2 ne null}">
+                <ul class="topnav navRight">
+
+
+                    <li><a href="#{request.contextPath}/j_spring_security_logout">LOGOUT</a></li>
+                </ul><!-- end topnav // right aligned -->
+            </h:panelGroup>
+        </h:form>    
+    </h:body>
+    <!-- END BODY -->
+</html>

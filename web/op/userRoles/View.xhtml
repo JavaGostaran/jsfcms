@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUserRolesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUserRolesLabel_id}"/>
+                    <h:outputText value="#{userRolesController.selected.id}" title="#{bundle.ViewUserRolesTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewUserRolesLabel_authority}"/>
+                    <h:outputText value="#{userRolesController.selected.authority}" title="#{bundle.ViewUserRolesTitle_authority}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{userRolesController.destroyAndView}" value="#{bundle.ViewUserRolesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewUserRolesEditLink}"/>
+                <br />
+                <h:commandLink action="#{userRolesController.prepareCreate}" value="#{bundle.ViewUserRolesCreateLink}" />
+                <br />
+                <h:commandLink action="#{userRolesController.prepareList}" value="#{bundle.ViewUserRolesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewUserRolesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

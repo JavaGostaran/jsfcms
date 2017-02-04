@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:ui="http://java.sun.com/jsf/facelets"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="template/themplate.xhtml">
+        <ui:define name="title">
+        </ui:define>
+        <ui:define name="body">
+
+                    <h:form>
+                    #{settingsController.find_lang()}
+                    </h:form>
+            
+
+
+            <div id="main-content" >
+                <!-- BEGIN PAGE CONTAINER-->
+                <div class="container-fluid" >
+                    <!-- BEGIN PAGE HEADER--> 
+
+                    <div  class="row-fluid">
+                        <div class="span12">
+                            <div class="widget">
+                                <div class="widget-title" >
+                                    <h4 style="float: right"><i class="icon-th-large" style="float: right"></i>پنل مدیریت</h4>
+                                </div>
+                                <div class="widget-body" dir="rtl">
+
+
+
+
+                                    <ul class="span8 breadcrumb" style="float: right">
+
+                                        <li style="text-align:  right">
+
+                                            <a style="text-align:  right" href="#">داشبورد</a>
+                                            <span style="text-align:  right" class="divider">/</span>
+                                        </li>
+
+</ul>
+                                            <div style="float: left" class="pull-right search-wrap" >
+                                                <form action="search_result.html" class="hidden-phone">
+                                                    <div class="input-append search-input-area">
+                                                        <input  id="appendedInputButton" type="text" />
+                                                        <button class="btn" type="button"><i class="icon-search"></i> </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                    
+
+                                    <div class="space5"></div>
+
+                                    <div style="text-align: right" class="alert alert-block alert-success fade in">
+                                        <button data-dismiss="alert" class="close" type="button">×</button>
+                                        <h4 class="alert-heading">
+                                            کاربر محترم 
+                                            <b>  #{userController.selected.name}</b>
+
+
+                                        </h4>
+                                        <p dir="rtl">
+
+                                            به پنل مدیریتی خود خوش آمدید
+                                        </p>
+                                    </div>
+
+
+                                    <div class="space5"></div>
+                                    
+                                    <div  class="row-fluid">
+                                        <!--BEGIN METRO STATES-->
+                                        <div class="metro-nav">
+                                            
+                                            <div style="float: right" class="metro-nav-block nav-block-orange double">
+                                                <a data-original-title="" href="User_list.xhtml">
+                                                    <i style="float: left" class="icon-user"></i>
+                                                    <div class="info">#{userController.pagination.itemsCount}</div>
+                                                    <div class="status">کاربران عضو</div>
+                                                </a>
+                                            </div>
+                                            <div style="float: right" class="metro-nav-block nav-olive double">
+                                                <a style="float: left" data-original-title="" href="Categary_list.xhtml">
+                                                    <i style="float: left" class="icon-list"></i>
+                                                    <div class="info">#{categaryController.paginationItemsCategoryNotBlogSubject.itemsCount}</div>
+                                                    <div class="status">لیست دسته بندی ها</div>
+                                                </a>
+                                            </div>
+                                            <div style="float: right" class="metro-nav-block nav-block-green double">
+                                                <a data-original-title="" href="Content_list.xhtml">
+                                                    <i style="float: left" class="icon-paper-clip"></i>
+                                                    <div class="info">#{contentController.pagination.itemsCount}</div>
+                                                    <div class="status">لیست صفحات</div>
+                                                </a>
+                                            </div>
+
+                                            <div style="float: right" class="metro-nav-block nav-block-yellow double">
+                                                <a data-original-title="" href="Content_comment.xhtml">
+                                                    <i style="float: left" class="icon-comments-alt"></i>
+                                                    <div class="info">#{commentController.pagination.itemsCount}</div>
+                                                    <div class="status">نظرات کاربران</div>
+                                                </a>
+                                            </div>
+                                            
+                                            <div style="float: right" class="metro-nav-block nav-light-purple double">
+                                                <a data-original-title="" href="Set_theme.xhtml">
+                                                    <i style="float: left" class="icon-cogs"></i>
+                                                    <div class="info"></div>
+                                                    <div class="status">تنظیمات</div>
+                                                </a>
+                                            </div>
+                                            
+                                            <div style="float: right" class="metro-nav-block nav-block-grey double">
+                                                <a data-original-title="" href="#{request.contextPath}/j_spring_security_logout">
+                                                    <i style="float: left" class="icon-power-off"></i>
+                                                    <div class="info">سایت شما</div>
+                                                    <div class="status">خروج</div>
+                                                </a>
+                                            </div>
+                   
+                                            <div class="metro-nav">
+
+                                            </div>
+                                        </div>
+                                        <br />
+                                    </div>
+                                    <div   class="metro-nav">
+
+                                    </div>
+                                    <div class="space10"></div>
+                                    <!--END METRO STATES-->
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ui:define>
+
+
+    </ui:composition>
+
+</html>

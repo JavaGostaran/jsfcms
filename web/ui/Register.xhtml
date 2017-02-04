@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="template/themplate#{settingController.theme()}-#{settingsController.template_type}.xhtml">
+        <ui:define name="title">
+        </ui:define>
+
+        <ui:define name="body2"> 
+            <div id="body2">
+
+                <h:form >
+                    #{userController.getCmsControllerAndFindOnItByAnIdToUseForCreate(cmsController, 2)}
+                    <header class="panel-heading">
+                        <h4>#{settingsController.selected.siteRegister}
+                            <span class="tools pull-right">
+                                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                                <a href="javascript:;" class="fa fa-times"></a>
+                            </span>
+                        </h4>
+                    </header>
+                    <div class="panel-body" >
+                        <div> 
+
+                            <label>#{settingsController.selected.siteRegisterName}</label>
+                            <h:inputText value="#{userController.selected.name}" class="form-control" id="name" />
+                            <label>#{settingsController.selected.siteRegisterUserName}</label>
+                            <h:inputText value="#{userController.selected.username}" class="form-control" id="username" />
+                            <label>#{settingsController.selected.siteRegisterPassword}</label>
+                            <h:inputText value="#{userController.selected.password}"  class="form-control" id="password" />
+                            <label>#{settingsController.selected.siteRegisterEmail}</label>
+                            <h:inputText value="#{userController.selected.email}" class="form-control" id="email" />
+                            #{userController.selected.setUserrolesID(userRolesController.find())}
+             
+                            <br />
+                            
+                            <h:commandButton class="btn btn-success" value="#{settingsController.selected.siteRegisterButton}" action="#{userController.create1()}" />
+
+
+
+
+                        </div>
+                    </div>
+                </h:form>
+                
+
+
+
+
+            </div>
+        </ui:define>
+
+
+
+    </ui:composition>
+
+</html>

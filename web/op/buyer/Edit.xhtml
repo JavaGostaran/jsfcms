@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditBuyerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditBuyerLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{buyerController.selected.id}" title="#{bundle.EditBuyerTitle_id}" required="true" requiredMessage="#{bundle.EditBuyerRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditBuyerLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{buyerController.selected.name}" title="#{bundle.EditBuyerTitle_name}" />
+                    <h:outputLabel value="#{bundle.EditBuyerLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{buyerController.selected.address}" title="#{bundle.EditBuyerTitle_address}" />
+                    <h:outputLabel value="#{bundle.EditBuyerLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{buyerController.selected.email}" title="#{bundle.EditBuyerTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditBuyerLabel_phone}" for="phone" />
+                    <h:inputText id="phone" value="#{buyerController.selected.phone}" title="#{bundle.EditBuyerTitle_phone}" />
+                    <h:outputLabel value="#{bundle.EditBuyerLabel_cmsID}" for="cmsID" />
+                    <h:selectOneMenu id="cmsID" value="#{buyerController.selected.cmsID}" title="#{bundle.EditBuyerTitle_cmsID}" required="true" requiredMessage="#{bundle.EditBuyerRequiredMessage_cmsID}">
+                        <f:selectItems value="#{cmsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{buyerController.update}" value="#{bundle.EditBuyerSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditBuyerViewLink}"/>
+                <br />
+                <h:commandLink action="#{buyerController.prepareList}" value="#{bundle.EditBuyerShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditBuyerIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

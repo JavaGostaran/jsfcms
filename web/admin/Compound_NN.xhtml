@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="template/themplate.xhtml">
+        <ui:define name="title">
+        </ui:define>
+        <ui:define name="body">
+
+            <div id="main-content">
+
+                <div class="container-fluid">
+                    <!-- BEGIN PAGE CONTAINER-->
+                    <!-- BEGIN PAGE HEADER-->   
+                    
+                    
+                                       <br />
+                    <ul class="breadcrumb" style="text-align: right">
+
+                        <li style="text-align: right">
+                            <span class="divider">/</span>
+                            <a href="#">ایجاد صفحه</a>
+
+                        </li>
+                        <li style="text-align: right">
+                            <span class="divider">/</span>
+                            <a href="Compound.xhtml">صفحه از نوع ترکیبی</a>
+
+                        </li>
+
+                        <li style="text-align: right">
+                            <span class="divider">/</span>
+                            <a href="Index.xhtml">داشبورد</a>
+
+                        </li>
+
+                    </ul> 
+
+                    
+                    
+                    <div dir="rtl" class="row-fluid">
+                        <div class="span12">
+
+                            <!-- BEGIN SAMPLE FORMPORTLET-->
+                            <div class="widget red">
+
+                                <div class="widget-title">
+                                    <h4 style="float: right"><i class="icon-reorder"></i> ایجاد صفحه از نوع ترکیبی</h4>
+                                    <span style="float: left" class="tools">
+                                        <a href="javascript:;" class="icon-chevron-down"></a>
+                                    </span>
+                                </div>
+
+
+                                <div  class="alert alert-block alert-danger fade in">
+
+                                        <!-- BEGIN FORM-->
+                                        
+
+
+                                        <h:panelGrid rendered="#{compoundController.base == 1}">
+
+                                        <!--this field use for idc in compound -->
+                                        #{compoundController.setRandomValue(contentController.selected.id)}
+                                        
+                                        #{compoundController.setRankValueForWhenAddNewCompoundAfterBuildedCompoundListInPast(contentController.selected.id)}
+                                        
+                                        #{contentController.prepareCreate1()}
+                                        
+                                        </h:panelGrid>
+
+                                        
+                                        
+                                        <h:panelGrid rendered="#{compoundController.base == 2}">
+                                        <h:form>
+                                            #{contentController.getCmsControllerAndFindOnItByAnIdToUseForCreate(cmsController,userController.selected.cmsID.id)}
+                                            #{compoundController.getCmsControllerAndFindOnItByAnIdToUseForCreate(cmsController,userController.selected.cmsID.id)}
+                                            <div class="row-fluid">
+                                                <div style="float:   right!important" class="span3">
+                                                    <h:selectOneMenu  id="type" value="#{contentController.selected.typePageID}"  required="true" >
+                                                        <f:selectItems value="#{typePageController.itemsInComboBox()}" itemLabel="#{item.type}" itemValue="#{item}" var="item"/>
+                                                    </h:selectOneMenu>
+                                                </div>
+
+
+
+                                                #{contentController.selected.setCategaryID(null)}
+                                                #{contentController.selected.setVisibility(false)}
+                                            </div>
+
+
+                                            <div class="form-action">
+                                                <h:commandLink value="+"  action="#{contentController.createContentForCompound()}" class="btn btn-info"/>
+                                            </div>
+                                        </h:form>
+
+                                        <h:form>
+
+                                            
+                                            
+                                            #{compoundController.selected.setIdc(compoundController.getRandomValue())}
+                                            #{compoundController.selected.setRankContent(compoundController.getRankValue())}
+                                            #{compoundController.selected.setContentID(contentController.getContent(contentController.selected.id))}
+
+
+
+                                        </h:form>
+                                        <div class="row-fluid">
+                                            <div class="span12">
+                                                <h:form  class="form-horizontal" enctype="multipart/form-data" rendered="#{contentController.typeOfContentForCompound == 'خبر'}">
+
+
+                                                    #{compoundController.create1(contentController)}
+                                                    #{compoundController.setRankValueUp()}
+                                                    <!-- BEGIN SAMPLE FORMPORTLET-->
+                                                    <div class="widget red">
+                                                        <div class="widget-title">
+                                                            <h4><i class="icon-reorder"></i> ایجاد صفحه از نوع #{typePageController.getTypePage(1).type}</h4>
+                                                        </div>
+
+
+                                                        <div  class="alert alert-block alert-danger fade in">
+                                                                <h:outputLabel value="تیتر:" />
+                                                                <div class="controls">
+                                                                    <h:inputText id="header" value="#{contentController.selected.header}"    class="span6 " />
+
+                                                                </div>
+
+
+                                                                <h:outputLabel value="لقب:" />
+                                                                <div class="controls">
+                                                                    <h:inputText id="title" value="#{contentController.selected.title}" class="span6 " />
+                                                                </div>
+
+
+                                                                <h:outputLabel value="نوع خبر:" />
+                                                                <div class="controls">
+                                                                    <h:selectOneMenu id="typePageNewsID" value="#{contentController.selected.typePageNewsID}"  required="true" requiredMessage="#{bundle.CreateContentRequiredMessage_typePageNewsID}">
+                                                                        <f:selectItems value="#{typePageNewsController.itemsInComboBox}" itemLabel="#{item.newsType}" itemValue="#{item}" var="item"/>
+                                                                    </h:selectOneMenu>
+                                                                </div>
+
+
+                                                                <h> این بخش از صفحه شما
+                                                                    <h:outputText value="#{typePageController.getTypePage(1).type}"/>
+                                                                    می باشد
+                                                                </h>
+                                                            #{contentController.selected.setIsStatic(0)}
+                                                            #{contentController.selected.setVisibility(true)}
+                                                            #{contentController.selected.setIsCompound(1)}
+                                                                <h:outputLabel value="بدنه:" />
+                                            <script src="#{request.contextPath}/faces/admin/res/ck/ckeditor.js"></script>
+                                            <h:inputTextarea class="ckeditor"  value="#{contentController.selected.body}" />
+
+
+                                                                <br />
+                                                            <div class="form-action">
+                                                                <h:commandLink value="ایجاد"  action="#{contentController.updateForCompoundInCompound_NN(compoundController)}" class="btn btn-info"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </h:form>
+                                                <h:form  class="form-horizontal" enctype="multipart/form-data" rendered="#{contentController.typeOfContentForCompound == 'متن'}">
+                                                    #{compoundController.create1(contentController)}
+                                                    #{compoundController.setRankValueUp()}
+                                                    <!-- BEGIN SAMPLE FORMPORTLET-->
+                                                    <div class="widget red">
+                                                        <div class="widget-title">
+                                                            <h4><i class="icon-reorder"></i> ایجاد صفحه از نوع #{typePageController.getTypePage(2).type}</h4>
+                                                        </div>
+
+
+                                                        <div  class="alert alert-block alert-danger fade in">
+                                                                <h:outputLabel value="تیتر:" />
+                                                                <div class="controls">
+                                                                    <h:inputText id="header" value="#{contentController.selected.header}"    class="span6 " />
+
+                                                                </div>
+
+
+                                                                <h:outputLabel value="لقب:" />
+                                                                <div class="controls">
+                                                                    <h:inputText id="title" value="#{contentController.selected.title}" class="span6 " />
+                                                                </div>
+
+
+                                                                <h> این بخش از صفحه شما
+                                                                    <h:outputText value="#{typePageController.getTypePage(2).type}"/>
+                                                                    می باشد
+                                                                </h>
+                                                            #{contentController.selected.setIsStatic(0)}
+                                                            #{contentController.selected.setVisibility(true)}
+                                                            #{contentController.selected.setIsCompound(1)}
+                                                                <h:outputLabel value="بدنه:" />
+                                            <script src="#{request.contextPath}/faces/admin/res/ck/ckeditor.js"></script>
+                                            <h:inputTextarea class="ckeditor"  value="#{contentController.selected.body}" />
+
+                                                                <br />
+                                                            <div class="form-action">
+                                                                <h:commandLink value="ایجاد"  action="#{contentController.updateForCompoundInCompound_NN(compoundController)}" class="btn btn-info"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </h:form>
+                                                <h:form  class="form-horizontal" enctype="multipart/form-data" rendered="#{contentController.typeOfContentForCompound == 'عکس'}">
+                                                    #{compoundController.create1(contentController)}
+                                                    #{compoundController.setRankValueUp()}
+                                                    <!-- BEGIN SAMPLE FORMPORTLET-->
+                                                    <div class="widget red">
+                                                        <div class="widget-title">
+                                                            <h4><i class="icon-reorder"></i> ایجاد #{typePageController.getTypePage(3).type}</h4>
+                                                        </div>
+
+
+                                                        <div  class="alert alert-block alert-danger fade in">
+                                                                <h> این بخش از صفحه شما
+                                                                    <h:outputText value="#{typePageController.getTypePage(3).type}"/>
+                                                                    می باشد
+                                                                </h>
+
+                                                                <h:outputLabel value="نام فایل آپلود شده ((#{contentController.selected.file})) است." /><br />
+                                                                <h >لطفا یک فایل آپلود نمایید</h> <br />
+                                                                <t:inputFileUpload value="#{contentController.uploadedFile}" />
+
+                                                            #{contentController.selected.setIsStatic(0)}
+                                                            #{contentController.selected.setVisibility(true)}
+                                                            #{contentController.selected.setIsCompound(1)}
+                                                            <br />
+                                                            <div class="form-action">
+                                                                <h:commandLink value="ایجاد"  action="#{contentController.upload1(2,compoundController)}" class="btn btn-info"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </h:form>
+                                                <h:form  class="form-horizontal" enctype="multipart/form-data" rendered="#{contentController.typeOfContentForCompound == 'تبلیغ'}">
+                                                    #{compoundController.create1(contentController)}
+                                                    #{compoundController.setRankValueUp()}
+                                                    <!-- BEGIN SAMPLE FORMPORTLET-->
+                                                    <div class="widget red">
+                                                        <div class="widget-title">
+                                                            <h4><i class="icon-reorder"></i> ایجاد صفحه از نوع #{typePageController.getTypePage(4).type}</h4>
+                                                        </div>
+
+
+                                                        <div  class="alert alert-block alert-danger fade in">
+                                                                <h:outputLabel value="تیتر:" />
+                                                                <div class="controls">
+                                                                    <h:inputText id="header" value="#{contentController.selected.header}"    class="span6 " />
+
+                                                                </div>
+
+
+                                                                <h:outputLabel value="لقب:" />
+                                                                <div class="controls">
+                                                                    <h:inputText id="title" value="#{contentController.selected.title}" class="span6 " />
+                                                                </div>
+
+
+                                                                <h> این بخش از صفحه شما
+                                                                    <h:outputText value="#{typePageController.getTypePage(4).type}"/>
+                                                                    می باشد
+                                                                </h>
+                                                            #{contentController.selected.setIsStatic(0)}
+                                                            #{contentController.selected.setVisibility(true)}
+                                                            #{contentController.selected.setIsCompound(1)}
+                                                                <h:outputLabel value="بدنه:" />
+                                            <script src="#{request.contextPath}/faces/admin/res/ck/ckeditor.js"></script>
+                                            <h:inputTextarea class="ckeditor"  value="#{contentController.selected.body}" />
+
+                                                                <br />
+                                                            <div class="form-action">
+                                                                <h:commandLink value="ایجاد"  action="#{contentController.updateForCompoundInCompound_NN(compoundController)}" class="btn btn-info"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </h:form>
+                                                <h:form  class="form-horizontal" enctype="multipart/form-data" rendered="#{contentController.typeOfContentForCompound == 'فایل'}">
+                                                    #{compoundController.create1(contentController)}
+                                                    #{compoundController.setRankValueUp()}
+                                                    <!-- BEGIN SAMPLE FORMPORTLET-->
+                                                    <div class="widget red">
+                                                        <div class="widget-title">
+                                                            <h4><i class="icon-reorder"></i> ایجاد صفحه از نوع #{typePageController.getTypePage(5).type}</h4>
+                                                        </div>
+
+
+                                                        <div  class="alert alert-block alert-danger fade in">
+                                                                <h:outputLabel value="تیتر:" />
+                                                                <div class="controls">
+                                                                    <h:inputText id="header" value="#{contentController.selected.header}"    class="span6 " />
+
+                                                                </div>
+
+
+                                                                <h:outputLabel value="لقب:" />
+                                                                <div class="controls">
+                                                                    <h:inputText id="title" value="#{contentController.selected.title}" class="span6 " />
+                                                                </div>
+
+
+                                                                <h> این بخش از صفحه شما
+                                                                    <h:outputText value="#{typePageController.getTypePage(5).type}"/>
+                                                                    می باشد
+                                                                </h>
+                                                            #{contentController.selected.setIsStatic(0)}
+                                                            #{contentController.selected.setVisibility(true)}
+                                                            #{contentController.selected.setIsCompound(1)}
+                                                                <h:outputLabel value="بدنه:" />
+                                            <script src="#{request.contextPath}/faces/admin/res/ck/ckeditor.js"></script>
+                                            <h:inputTextarea class="ckeditor"  value="#{contentController.selected.body}" />
+
+                                                                <br />
+                                                            <div class="form-action">
+                                                                <h:commandLink value="ایجاد"  action="#{contentController.updateForCompoundInCompound_NN(compoundController)}" class="btn btn-info"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </h:form>
+                                                <h:form  class="form-horizontal" enctype="multipart/form-data" rendered="#{contentController.typeOfContentForCompound == 'ایستا'}">
+                                                    #{compoundController.create1(contentController)}
+                                                    #{compoundController.setRankValueUp()}
+                                                    <!-- BEGIN SAMPLE FORMPORTLET-->
+                                                    <div class="widget red">
+                                                        <div class="widget-title">
+                                                            <h4><i class="icon-reorder"></i> ایجاد صفحه از نوع #{typePageController.getTypePage(6).type}</h4>
+                                                        </div>
+
+
+                                                        <div  class="alert alert-block alert-danger fade in">
+                                                                <h:outputLabel value="تیتر:" />
+                                                                <div class="controls">
+                                                                    <h:inputText id="header" value="#{contentController.selected.header}"    class="span6 " />
+
+                                                                </div>
+
+
+                                                                <h:outputLabel value="لقب" />
+                                                                <div class="controls">
+                                                                    <h:inputText id="title" value="#{contentController.selected.title}" class="span6 " />
+                                                                </div>
+
+
+                                                                <h> این بخش از صفحه شما
+                                                                    <h:outputText value="#{typePageController.getTypePage(6).type}"/>
+                                                                    می باشد
+                                                                </h>
+                                                            #{contentController.selected.setIsStatic(0)}
+                                                            #{contentController.selected.setVisibility(true)}
+                                                            #{contentController.selected.setIsCompound(1)}
+                                                            
+                                                                <h:outputLabel value="بدنه:" />
+                                            <script src="#{request.contextPath}/faces/admin/res/ck/ckeditor.js"></script>
+                                            <h:inputTextarea class="ckeditor"  value="#{contentController.selected.body}" />
+
+                                                                <br />
+                                                            <div class="form-action">
+                                                                <h:commandLink value="ایجاد"  action="#{contentController.updateForCompoundInCompound_NN(compoundController)}" class="btn btn-info"/>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </h:form>
+                                            </div>
+
+                                            <div class="span12">
+                                                <h:form  class="form-horizontal" id="compound">
+                                                    <!-- BEGIN SAMPLE FORMPORTLET-->
+                                                    <div class="widget red">
+                                                        <div class="widget-title">
+                                                            <h4><i class="icon-reorder"></i>لیست محتویات این صفحه ترکیبی</h4>
+                                                        </div>
+
+
+                                                        <div  class="alert alert-block alert-danger fade in">
+                                                            <table class="table table-striped table-bordered" id="sample_1">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>شناسه این صفحه ترکیبی</th>
+                                                                        <th>نام</th>
+                                                                        <th>لقب</th>
+                                                                        <th>نوع</th>
+                                                                        <th>فایل آپلود شده</th>
+                                                                        <th>اولویت</th>
+                                                                        <th></th>
+                                                                        <th></th>
+                                                                        <th>قابلیت نمایش</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                    <ui:repeat value="#{compoundController.getItems1()}" var="item"   > 
+                                                                        <tr class="odd gradeX">
+                                                                            <td> #{item.idc} </td>
+                                                                            <td> #{item.contentID.header} </td>
+                                                                            <td> #{item.contentID.title} </td>
+                                                                            <td> #{item.contentID.typePageID.type} </td>
+                                                                            <td> #{item.contentID.file} </td>
+                                                                            <td> #{item.rankContent} </td>
+                                                                            <td > 
+
+
+                                                                                <h:commandLink rendered="#{item.rankContent != 1}" class="button" value="بالا" >
+                                                                                    <f:ajax  listener="#{compoundController.setRankValueUpForList(item.idc,item.rankContent)}" render=":compound"  />
+                                                                                </h:commandLink>
+                                                                            </td>
+
+                                                                            <td> 
+                                                                                <h:commandLink rendered="#{item.rankContent != (compoundController.rankValue - 1)}" class="button" value="پایین" >
+                                                                                    <f:ajax listener="#{compoundController.setRankValueDownForList(item.idc,item.rankContent)}" render=":compound"  />
+                                                                                </h:commandLink>
+                                                                            </td>
+                                                                            <td>
+                                                                                <h:commandLink rendered="#{item.contentID.visibility}" class="label label-success" value="نمایش" >
+                                                                                    <f:ajax listener="#{contentController.setVisibilityOnOff(item.contentID.id , false)}" render=":compound"  />
+                                                                                </h:commandLink>
+                                                                                <h:commandLink rendered="#{!item.contentID.visibility}" class="label label-important" value="عدم نمایش" >
+                                                                                    <f:ajax listener="#{contentController.setVisibilityOnOff(item.contentID.id , true)}" render=":compound"  />
+                                                                                </h:commandLink>
+                                                                            </td>
+                                                                            
+                                                                        </tr>
+                                                                    </ui:repeat>
+                                                                </tbody>
+                                                            </table>
+                                                            <br />
+                                                        
+                                                                             
+                                                                            <br />
+                                                                            </div>
+                                                    </div>
+                                                </h:form>
+                                            </div>
+                                        </div>
+                                        </h:panelGrid>
+                                                                                  
+                                            <a style="float: left" class="btn btn-warning" href="Content_edit.xhtml?cid=#{compoundController.getRandomValue()}">بازگشت به صفحه قبل </a>
+                                            <div class="space5"></div>
+                                            <a style="float: left" class="btn btn-danger" href="Index.xhtml">بازگشت به  داشبورد </a>
+                                            <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>          
+        </ui:define>
+
+    </ui:composition>
+
+</html>

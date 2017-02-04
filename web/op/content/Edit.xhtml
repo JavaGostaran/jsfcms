@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditContentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditContentLabel_header}" for="header" />
+                    <h:inputText id="header" value="#{contentController.selected.header}" title="#{bundle.EditContentTitle_header}" />
+                    <h:outputLabel value="#{bundle.EditContentLabel_title}" for="title" />
+                    <h:inputText id="title" value="#{contentController.selected.title}" title="#{bundle.EditContentTitle_title}" />
+                    <h:outputLabel value="#{bundle.EditContentLabel_body}" for="body" />
+                    <h:inputText id="body" value="#{contentController.selected.body}" title="#{bundle.EditContentTitle_body}" />
+                    <h:outputLabel value="#{bundle.EditContentLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{contentController.selected.id}" title="#{bundle.EditContentTitle_id}" required="true" requiredMessage="#{bundle.EditContentRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditContentLabel_file}" for="file" />
+                    <h:inputTextarea rows="4" cols="30" id="file" value="#{contentController.selected.file}" title="#{bundle.EditContentTitle_file}" />
+                    <h:outputLabel value="#{bundle.EditContentLabel_typePageID}" for="typePageID" />
+                    <h:selectOneMenu id="typePageID" value="#{contentController.selected.typePageID}" title="#{bundle.EditContentTitle_typePageID}" required="true" requiredMessage="#{bundle.EditContentRequiredMessage_typePageID}">
+                        <f:selectItems value="#{typePageController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditContentLabel_categaryID}" for="categaryID" />
+                    <h:selectOneMenu id="categaryID" value="#{contentController.selected.categaryID}" title="#{bundle.EditContentTitle_categaryID}" required="true" requiredMessage="#{bundle.EditContentRequiredMessage_categaryID}">
+                        <f:selectItems value="#{categaryController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{contentController.update}" value="#{bundle.EditContentSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditContentViewLink}"/>
+                <br />
+                <h:commandLink action="#{contentController.prepareList}" value="#{bundle.EditContentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditContentIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

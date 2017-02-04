@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="template/themplate.xhtml">
+        <ui:define name="title">
+        </ui:define>
+        <ui:define name="body">
+            <div dir="rtl" id="main-content">
+                <!-- BEGIN PAGE CONTAINER-->
+                <div class="container-fluid">
+                    <!-- BEGIN PAGE HEADER-->   
+
+                    
+                                            <br />
+                                            <ul class="breadcrumb" style="text-align: right">
+
+                                                <li style="text-align: right">
+                                                    <span class="divider">/</span>
+                                                    <a href="#">تغییر دسته بندی</a>
+
+                                                </li>
+
+                                                <li style="text-align: right">
+                                                    <span class="divider">/</span>
+                                                    <a href="Index.xhtml">داشبورد</a>
+
+                                                </li>
+
+                                            </ul> 
+
+
+
+
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <!-- BEGIN SAMPLE FORMPORTLET-->
+                            <div class="widget red">
+                                <div class="widget-title">
+                                    <h4 style="float: right"><i class="icon-reorder"></i> تغییر دسته بندی </h4>
+                                    <span style="float: left" class="tools">
+                                        <a href="javascript:;" class="icon-chevron-down"></a>
+                                    </span>
+                                </div>
+                                <div  class="alert alert-block alert-danger fade in">
+                                    <!-- BEGIN FORM-->
+                                    
+                                    <h:form>
+                                        #{categaryController.FindContent()}
+                                        #{categaryController.setBoFalse()}
+                                    </h:form>
+                                    
+                                    <h:form id="form1" rendered="#{categaryController.selected.parentID.information != 'blog'}"  class="form-horizontal">
+                                        
+                                        
+                                        <div>
+                                                <h:outputLabel value="نام:" for="name" />
+                                                <h:inputText class="span6" id="name" value="#{categaryController.selected.name}"  /> 
+                                                <br />
+
+                                                <h:outputLabel value="قرارگیری در منوی اصلی:" >
+                                                    <h:selectBooleanCheckbox>
+                                                        <f:ajax  event="click" listener="#{categaryController.setBo()}" render=":form1"/>
+                                                    </h:selectBooleanCheckbox>
+                                                </h:outputLabel>
+
+                                                <br />
+
+
+                                                <h:outputLabel value="در دسته بندی:" />
+                                                <h:selectOneMenu disabled="#{categaryController.bo}" id="categaryID" value="#{categaryController.selected.parentID}"  required="true" >
+                                                    <f:selectItems value="#{categaryController.itemsInComboBox1}" itemLabel="#{item.name}" itemValue="#{item}" var="item"/>
+                                                </h:selectOneMenu>
+                                                <br />
+
+                                                <h:panelGrid id="pg" rendered="#{categaryController.bo}">
+                                                    #{categaryController.selected.setParentID(categaryController.FindCategaryRoot())}
+                                                </h:panelGrid>
+
+                                                <h:outputLabel value="قابلیت مشاهده:" />
+                                                <div class="controls">
+                                                    <label class="checkbox">
+                                                        <div class="checker" id="uniform-undefined"><span class="checked"><h:selectBooleanCheckbox value="#{categaryController.selected.visibility}" style="opacity: 10;"/></span></div> 
+                                                    </label>
+                                                </div>
+
+                                        </div>
+
+                                        <h:commandLink action="#{categaryController.update}" class="btn btn-info" value="اعمال تغییرات"/>
+                                        <a style="float: left" class="btn btn-warning" href="Categary_list.xhtml">بازگشت به لیست دسته بندی ها</a>
+                                        <div class="space5"></div>
+                                        <a style="float: left" class="btn btn-danger" href="Index.xhtml">بازگشت به داشبورد</a>
+                                        
+                                    </h:form>
+                                    <h:form rendered="#{categaryController.selected.parentID.information == 'blog'}"  class="form-horizontal">
+                                        
+                                        
+                                        <div>
+                                                <h:outputLabel value="نام:" for="name" />
+                                                <h:inputText class="span6" id="name1" value="#{categaryController.selected.name}"  /> 
+                                                <br />
+
+                                 
+                                           
+                                                <h:outputLabel value="قابلیت مشاهده:" />
+                                                <div class="controls">
+                                                    <label class="checkbox">
+                                                        <div class="checker" id="uniform-undefined1"><span class="checked"><h:selectBooleanCheckbox value="#{categaryController.selected.visibility}" style="opacity: 10;"/></span></div> 
+                                                    </label>
+                                                </div>
+
+                                        </div>
+
+                                        <h:commandLink action="#{categaryController.update}" class="btn btn-info" value="اعمال تغییرات"/>
+                                        <a style="float: left" class="btn btn-warning" href="Blog_subjects_list.xhtml">بازگشت به لیست موضوعات</a>
+                                        <div class="space5"></div>
+                                        <a style="float: left" class="btn btn-danger" href="Index.xhtml">بازگشت به داشبورد</a>
+                                        
+                                    </h:form>
+      
+                                    <!-- END FORM-->
+                                </div>
+                            </div>
+                            <!-- END SAMPLE FORM PORTLET-->
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </ui:define>
+
+    </ui:composition>
+
+</html>

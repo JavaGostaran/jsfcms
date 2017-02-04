@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="template/themplate.xhtml">
+        <ui:define name="title">
+        </ui:define>
+        <ui:define name="body">
+            <div id="main-content">
+                <!-- BEGIN PAGE CONTAINER-->
+                <div class="container-fluid">
+                    <!-- BEGIN PAGE HEADER-->   
+
+
+                    <br />
+                    <ul class="breadcrumb" style="text-align: right">
+
+                        <li style="text-align: right">
+                            <span class="divider">/</span>
+                            <a href="#">ایجاد صفحه</a>
+
+                        </li>
+                        <li style="text-align: right">
+                            <span class="divider">/</span>
+                            <a href="News.xhtml">صفحه از نوع خبر</a>
+
+                        </li>
+
+                        <li style="text-align: right">
+                            <span class="divider">/</span>
+                            <a href="Index.xhtml">داشبورد</a>
+
+                        </li>
+
+                    </ul> 
+
+
+
+
+
+                    <div dir="rtl" class="row-fluid">
+                        <div class="span12">
+                            <!-- BEGIN SAMPLE FORMPORTLET-->
+                            <div class="widget green">
+                                <div class="widget-title">
+                                    <h4 style="float: right"><i class="icon-reorder"></i> ایجاد صفحه از نوع خبر</h4>
+                                    <span style="float: left" class="tools">
+                                        <a href="javascript:;" class="icon-chevron-down"></a>
+                                    </span>
+                                </div>
+                                <div  class="alert alert-block alert-success fade in">
+                                    <!-- BEGIN FORM-->
+                                    <h:form id="f"  class="form-horizontal" enctype="multipart/form-data">
+                                            #{contentController.prepareCreate1()}
+                                            #{tagController.clearTag()}
+                                            <h:outputLabel value="تیتر:" />
+                                            <div class="controls">
+                                                <h:inputText id="header" value="#{contentController.selected.header}"    class="span6 " />
+
+                                            </div>
+
+
+                                            <h:outputLabel value="لقب:" />
+                                            <div class="controls">
+                                                <h:inputText id="title" value="#{contentController.selected.title}" class="span6 " />
+                                            </div>
+
+
+
+                                        #{contentController.selected.setCategaryID(categaryController.FindCategaryNews(5))}
+                                         
+                                            
+                                            <h:outputLabel value="نوع خبر:" />
+                                            <div class="controls">
+                                                <h:selectOneMenu id="typePageNewsID" value="#{contentController.selected.typePageNewsID}"  required="true" requiredMessage="#{bundle.CreateContentRequiredMessage_typePageNewsID}">
+                                                    <f:selectItems value="#{typePageNewsController.itemsInComboBox}" itemLabel="#{item.newsType}" itemValue="#{item}" var="item"/>
+                                                </h:selectOneMenu>
+                                            </div>
+                                            
+                                            
+                                            <h> صفحه شما از جنس
+                                                <h:outputText value="#{typePageController.getTypePage(1).type}"/>
+                                                #{contentController.selected.setTypePageID(typePageController.getTypePage(1))}                           
+                                                می باشد
+                                            </h>
+                                        #{contentController.selected.setIsStatic(0)}
+                                        #{contentController.selected.setIsCompound(0)}
+                                            <h:outputLabel value="بدنه:" />
+                                                <script src="#{request.contextPath}/faces/admin/res/ck/ckeditor.js"></script>
+                                            <h:inputTextarea class="ckeditor"  value="#{contentController.selected.body}" />
+
+                                            
+                                            <h:outputLabel value="انتخاب برچسب" />
+                                            <h:selectOneMenu id="Tag1" value="#{tagController.tagListObj1}" >
+                                                 <f:selectItems value="#{tagController.getItemsInComboBox()}" itemLabel="#{item.tagName}" itemValue="#{item.tagName}" var="item"/>
+                                                 <f:ajax listener="#{tagController.getTagListObj1()}" />
+                                            </h:selectOneMenu>
+                                            <h:inputText id="Tag2" value="#{tagController.tagListObj2}" class="span3 " >
+                                                <f:ajax listener="#{tagController.getTagListObj2()}" />
+                                            </h:inputText>
+                                            <h:commandButton value="برچسب گذاری"   class="btn btn-info">
+                                                <f:ajax listener="#{tagController.setTagListObjToTagList()}"  render=":f:p" />
+                                            </h:commandButton>
+                                            <h:panelGrid id="p"   >  
+                                            <h:outputLabel value="تگ های این صفحه:" />
+                                                <table >
+                                                    <tbody>
+                                                        <tr>
+                                                            <ui:repeat  value="#{tagController.tagList}" var="i">
+                                                                <td>(</td>
+                                                                <td>#{i}</td>
+                                                                <td style="text-align: center"> 
+                                                                    <h:commandLink class="icon-remove-sign" >
+                                                                        <f:ajax listener="#{tagController.tagList.remove(tagController.tagList.indexOf(i))}" render=":f:p" />
+                                                                    </h:commandLink>
+                                                                </td>
+                                                                <td>)</td>
+                                                            </ui:repeat>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </h:panelGrid>
+                                            <br />
+                                            <br />
+                                            
+                                            
+                                        <h> قابلیت نمایش</h>
+                                            <div class="controls">
+                                                <label class="checkbox">
+
+                                                    <div class="checker" id="uniform-undefined"><span class="checked"><h:selectBooleanCheckbox value="#{contentController.selected.visibility}" style="opacity: 10;"/></span></div> 
+                                                </label>
+                                            </div>
+                                            
+                                            <h:outputLabel value="نام فایل آپلود شده ((#{contentController.selected.file})) است." /><br />
+                                            <h >لطفا یک فایل آپلود نمایید</h> <br />
+                                            <t:inputFileUpload value="#{contentController.uploadedFile}" />
+                      
+                                            <br />
+                                        <div class="form-action">
+                                            <h:commandLink value="ایجاد"  action="#{contentController.upload(0,compoundController,tagController,contenthasTagController,cmsController,userController.selected.cmsID.id)}" class="btn btn-info"/>
+                                         <a style="float: left" class="btn btn-warning" href="News.xhtml">بازگشت به صفحه قبل </a>
+                                        <div class="space5"></div>
+                                        <a style="float: left" class="btn btn-danger" href="Index.xhtml">بازگشت به  داشبورد </a>
+                                        <br />
+                                        </div>
+                                        
+                                        
+                                        
+                                    </h:form>
+                                    
+                                    <!-- END FORM-->
+                                </div>
+                            </div>
+                            <!-- END SAMPLE FORM PORTLET-->
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </ui:define>
+
+   
+    </ui:composition>
+
+</html>

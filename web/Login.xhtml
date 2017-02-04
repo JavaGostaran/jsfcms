@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:f="http://java.sun.com/jsf/core"> 
+
+    <h:head>
+        <meta charset="utf-8" />
+        <title>ورود</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+        <link href="res/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="res/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+        <link href="res/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="res/css/style.css" rel="stylesheet" />
+        <link href="res/css/style-responsive.css" rel="stylesheet" />
+        <link href="res/css/style-default.css" rel="stylesheet" id="style_color" />
+    </h:head>
+    <!-- END HEAD -->
+    <!-- BEGIN BODY -->
+    <h:body class="lock">
+        <div class="login-wrap">
+
+            <h:form>
+                #{contentController.setTtemp(0)}
+                #{categaryController.setTtemp(0)}
+            </h:form>
+            <form action="../j_spring_security_check" method="post" class="login">
+
+                <br />
+                <br />
+                <br />
+                <br />
+
+
+                <div class="metro single-size red">
+                    <div class="locked">
+                        <i class="icon-lock"></i>
+                        <span>ورود</span>
+                    </div>
+                </div>
+
+
+                <div class="metro double-size green">
+                    <div class="input-append lock-input">
+                        <input id="username" name="j_username" type="text"  placeholder="نام کاربری"/>
+                    </div>
+                </div>
+
+
+                <div class="metro double-size yellow">
+                    <div class="input-append lock-input">
+                        <input id="password" name="j_password" type="password" placeholder="رمز عبور"/>
+                    </div>
+                </div>
+
+
+                <div class="metro single-size terques login">
+                    <button type="submit" class="btn login-btn">
+                        ورود
+                        <i class=" icon-long-arrow-right"></i>
+                    </button>
+                </div>
+
+
+
+
+
+                <div class="metro single-size navy-blue ">
+                    <a href="javascript:;" class="social-link">
+                        <i class="icon-facebook-sign"></i>
+                        <span>ورود با اکانت فیس بوک</span>
+                    </a>
+                </div>
+                <div class="metro single-size deep-red">
+                    <a href="javascript:;" class="social-link">
+                        <i class="icon-google-plus-sign"></i>
+                        <span>ورود با اکانت گوگل</span>
+                    </a>
+                </div>
+                <div class="metro single-size blue">
+                    <a href="javascript:;" class="social-link">
+                        <i class="icon-twitter-sign"></i>
+                        <span>ورود با اکانت توییتر</span>
+                    </a>
+                </div>
+                <div class="metro single-size purple">
+                    <a href="javascript:;" class="social-link">
+                        <i class="icon-skype"></i>
+                        <span>ورود با اکانت اسکایپ</span>
+                    </a>
+                </div>
+                <div class="metro single-size red">
+                    <a href="#{request.contextPath}/faces/ui/Register.xhtml" class="social-link">
+                        <i class="icon-book"></i>
+                        <span>ثبت نام</span>
+                    </a>
+                </div>
+                <div class="metro single-size green">
+                    <a href="#{request.contextPath}/faces/ui/Index.xhtml" class="social-link">
+                        <i class="icon-long-arrow-left"></i>
+                        <span>خروج</span>
+                    </a>
+                </div>
+                <div class="login-footer">
+                    <div class="remember-hint pull-left">
+                        <input type="checkbox" id="" /> مرا به خاطر بسپار
+                    </div>
+                    <div class="forgot-hint pull-right">
+                        <a id="forget-password" class="" href="javascript:;">رمز عبور را فراموش کرده اید؟</a>
+                    </div>
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+    </h:body>
+    <!-- END BODY -->
+</html>

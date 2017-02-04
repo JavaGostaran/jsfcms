@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="template/themplate#{settingController.theme()}-register.xhtml">
+        <ui:define name="body2">
+            <header class="panel-heading">
+                <h4>#{settingsController.selected.siteWelcomeTitle}
+                    <span class="tools pull-right">
+                        <a href="javascript:;" class="fa fa-chevron-down"></a>
+                        <a href="javascript:;" class="fa fa-times"></a>
+                    </span>
+                </h4>
+            </header>
+            
+            <div class="panel-body" >
+                        <div> 
+
+                            <h4 style="text-align: center;font-family: b yekan">
+                                #{settingsController.selected.siteWelcomeMessage}
+                            </h4>
+
+                        </div>
+                    </div>
+        </ui:define>
+    </ui:composition>
+
+</html>

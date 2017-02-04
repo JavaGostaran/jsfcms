@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewBuyerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewBuyerLabel_id}"/>
+                    <h:outputText value="#{buyerController.selected.id}" title="#{bundle.ViewBuyerTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewBuyerLabel_name}"/>
+                    <h:outputText value="#{buyerController.selected.name}" title="#{bundle.ViewBuyerTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewBuyerLabel_address}"/>
+                    <h:outputText value="#{buyerController.selected.address}" title="#{bundle.ViewBuyerTitle_address}"/>
+                    <h:outputText value="#{bundle.ViewBuyerLabel_email}"/>
+                    <h:outputText value="#{buyerController.selected.email}" title="#{bundle.ViewBuyerTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewBuyerLabel_phone}"/>
+                    <h:outputText value="#{buyerController.selected.phone}" title="#{bundle.ViewBuyerTitle_phone}"/>
+                    <h:outputText value="#{bundle.ViewBuyerLabel_cmsID}"/>
+                    <h:outputText value="#{buyerController.selected.cmsID}" title="#{bundle.ViewBuyerTitle_cmsID}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{buyerController.destroyAndView}" value="#{bundle.ViewBuyerDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewBuyerEditLink}"/>
+                <br />
+                <h:commandLink action="#{buyerController.prepareCreate}" value="#{bundle.ViewBuyerCreateLink}" />
+                <br />
+                <h:commandLink action="#{buyerController.prepareList}" value="#{bundle.ViewBuyerShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewBuyerIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:ui="http://java.sun.com/jsf/facelets"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:t="http://myfaces.apache.org/tomahawk"
+       xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="template/themplate#{settingController.theme()}-register.xhtml">
+
+
+        <ui:define name="body2"> 
+            <h:panelGroup rendered="#{settingsController.lang_ID==1}">
+
+
+
+                #{userController.getCmsControllerAndFindOnItByAnIdToUseForCreate(cmsController, 2)}
+                <!-- page start-->
+                <section class="panel">
+                    <div  id="c-slide" class="carousel slide auto panel-body">
+                        
+                        <ol dir="ltr" class="carousel-indicators out">
+                            <li class="active" data-slide-to="0" data-target="#c-slide"></li>
+                            <li class="" data-slide-to="1" data-target="#c-slide"></li>
+                            <li class="" data-slide-to="2" data-target="#c-slide"></li>
+                        </ol>
+                        
+                        <div class="carousel-inner">
+                            <div class="item text-center active">
+                                <h3 style="font-family: b nazanin;font-weight: bold">jsfcms چیست؟</h3>
+                                <small style="font-family: b nazanin;font-size: medium" class="text-muted">برای اولین بار در ایران، سیستم مدیریت محتوا بر پایه جاوا، بصورت متن باز در انواع مختلف پرتال های  شخصی، گروهی، اداری و تجاری</small>
+                            </div>
+                            <div class="item text-center">
+                                <h3 style="font-family: b nazanin;font-weight: bold">مزیت jsfcms بر سایر سیستم های مدیریت محتوا چیست؟ </h3>
+                                <small style="font-family: b nazanin;font-size: medium" class="text-muted">این سامانه بر اساس سادگی در استفاده در کنار قابلیت های فراوان پیاده سازی شده است.</small>
+                            </div>
+                            <div class="item text-center">
+                                <h3 style="font-family: b nazanin;font-weight: bold">برای استفاده از jsfcms به چه دانشی نیاز است؟</h3>
+                                <small style="font-family: b nazanin;font-size: medium" class="text-muted">این سامانه به نحوی طراحی شده است که در آن ایجاد صفحات وب، تنها با چند کلیک و بدون نیاز به هیچ دانشی، امکان پذیر است.</small>
+                            </div>
+                        </div>
+                        <a data-slide="prev" href="#c-slide" class="left carousel-control">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a data-slide="next" href="#c-slide" class="right carousel-control">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+                </section>
+
+
+                <!-- page start-->
+                <div dir="ltr" class="row state-overview">
+                    <div class="col-lg-3 col-sm-6">
+                        <section class="panel">
+                            <div class="symbol terques">
+                                <i class="fa fa-male"></i>
+                            </div>
+                            <div class="value">
+                                <h1 style="font-family: b nazanin" class="count4">
+                                    0
+                                </h1>
+                                <p style="font-family: b nazanin;font-size: medium">تعداد کاربران پرتال شخصی</p>
+                            </div>
+                        </section>
+                    </div>
+
+
+                    <div class="col-lg-3 col-sm-6">
+                        <section class="panel">
+                            <div class="symbol red">
+                                <i class="fa fa-group"></i>
+                            </div>
+                            <div class="value">
+                                <h1 style="font-family: b nazanin" class="count3">
+                                    0
+                                </h1>
+                                <p style="font-family: b nazanin;font-size: medium">تعداد کاربران پرتال گروهی</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <section class="panel">
+                            <div class="symbol blue">
+                                <i class="fa fa-building-o"></i>
+                            </div>
+                            <div class="value">
+                                <h1 style="font-family: b nazanin" class="count2">
+                                    0
+                                </h1>
+                                <p style="font-family: b nazanin;font-size: medium">تعداد کاربران پرتال های اداری</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <section class="panel">
+                            <div class="symbol yellow">
+                                <i class="fa fa-globe"></i>
+                            </div>
+                            <div class="value">
+                                <h1 style="font-family: b nazanin" class="count">
+                                    0
+                                </h1>
+                                <p style="font-family: b nazanin;font-size: medium">تعداد کاربران پرتال های تجاری</p>
+                            </div>
+                        </section>
+                    </div>
+                </div> 
+                <section class="panel">
+                    <header class="panel-heading" style="font-weight: bold;font-family: b nazanin;font-size: medium">
+                        #{settingsController.selected.siteRegister}
+                    </header>
+                    <div class="panel-body">
+                        <div  class="stepy-tab">
+                            <ul id="default-titles" class="stepy-titles clearfix">
+                                <li id="default-title-0" class="current-step">
+                                    <div>معرفی</div>
+                                </li>
+                                <li id="default-title-1" class="">
+                                    <div>پرتال</div>
+                                </li>
+                                <li id="default-title-2" class="">
+                                    <div>کاربر</div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <h:form class="form-horizontal" id="default">
+                            <fieldset style="font-family: b nazanin" title="معرفی" class="step" id="default-step-0">
+                                <legend> </legend>
+                                <div class="form-group">
+
+                                    <div class="col-lg-10">
+                                        <h:outputText style="font-family: b nazanin;font-size: medium" value="سامانهٔ مدیریت محتوا (به انگلیسی: Content Management System و به اختصار: CMS)، مجموعه‌ای از رویه‌ها برای مدیریت روند کار در یک محیط مشارکتی است. این رویه‌ها می‌توانند دستی یا رایانه‌ای باشند. این رویه‌ها طراحی می‌شوند که:"/>    
+                                        <br />
+                                        <h:outputText style="font-family: b nazanin;font-size: medium" value="افراد زیادی بتوانند مشارکت کنند و داده‌های مختلفی را به اشتراک بگذارند"/>    
+                                        <br />
+                                        <h:outputText style="font-family: b nazanin;font-size: medium" value="داده‌ها دارای کنترل دسترسی براساس نقش کاربران باشند. نقش کاربران تعیین می‌کند که چه کاربری چه چیزی را می‌تواند ویرایش کند یا ببیند"/>    
+                                        <br />
+                                        <h:outputText style="font-family: b nazanin;font-size: medium" value="ذخیره‌سازی و بازیابی داده‌ها را آسان کند"/>    
+                                        <br />
+                                        <h:outputText style="font-family: b nazanin;font-size: medium" value="ورودی‌های مشابه تکراری را کاهش دهد"/>    
+                                        <br />
+                                        <h:outputText style="font-family: b nazanin;font-size: medium" value="گزارش‌نویسی را بهبود بخشد"/>    
+                                        <br />
+                                        <h:outputText style="font-family: b nazanin;font-size: medium" value="ارتباط بین کاربران را بهبود بخشد"/>    
+                                        <br />
+                                        <h:outputText style="font-family: b nazanin;font-size: medium" value="در یک CMS، داده می‌تواند هر چیزی باشد، مانند اسناد، فیلم، عکس، شماره تلفن، داده‌های علمی و غیره. CMSها بیشتر برای ذخیره، کنترل، بازبینی، توسعه معنایی و انتشار اسناد به‌کار می‌رود."/>    
+                                    </div>
+                                    <label style="text-align: right;font-family: b nazanin;font-size: medium" class="col-lg-2 control-label">توضیحات</label>
+                                </div>
+                            </fieldset>
+
+                            <fieldset style="font-family: b nazanin" title="پرتال" class="step" id="default-step-1">
+                                <legend> </legend>
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <h:inputText value="#{cmsController.selected.domain}" class="form-control" />
+                                    </div>
+                                    <label style="text-align: right;font-family: b nazanin;font-size: medium" class="col-lg-2 control-label">نام CMS</label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <h:inputTextarea rows="5" class="form-control"  />
+                                    </div>
+                                    <label style="text-align: right;font-family: b nazanin;font-size: medium" class="col-lg-2 control-label">توضیحات</label>
+                                </div>
+                            </fieldset>
+
+                            <fieldset style="font-family: b nazanin" title="کاربر" class="step" id="default-step-2" >
+                                <legend > </legend>
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <h:inputText value="#{userController.selected.name}" class="form-control"  />
+                                    </div>
+                                    <label style="text-align: right;font-family: b nazanin;font-size: medium" class="col-lg-2 control-label">#{settingsController.selected.siteRegisterName}</label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <h:inputText value="#{userController.selected.username}" class="form-control" />
+                                    </div>
+                                    <label style="text-align: right;font-family: b nazanin;font-size: medium" class="col-lg-2 control-label">#{settingsController.selected.siteRegisterUserName}</label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <h:inputSecret value="#{userController.selected.password}"  class="form-control"  />
+                                    </div>
+                                    <label style="text-align: right;font-family: b nazanin;font-size: medium" class="col-lg-2 control-label">#{settingsController.selected.siteRegisterPassword}</label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <h:inputText value="#{userController.selected.email}" class="form-control"  />
+                                    </div>
+                                    <label style="text-align: right;font-family: b nazanin;font-size: medium" class="col-lg-2 control-label">#{settingsController.selected.siteRegisterEmail}</label>
+                                </div>
+                                #{userController.selected.setUserrolesID(userRolesController.findAdmin())}
+                            </fieldset>
+                            <h:commandButton style="font-family: b nazanin;font-size: medium" type="submit" class="finish btn btn-danger"  value="#{settingsController.selected.siteRegisterButton}" action="#{userController.createUserForNewCMS(cmsController,categaryController,settingsController,settingController,lucene)}" />
+                        </h:form>
+                    </div>
+                </section>
+
+
+                
+                <!--start modal-->
+                <form>
+                    <a id="aw"  data-toggle="modal" href="#myModal" />
+                </form>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div style= " text-align:   #{settingsController.right}" class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><a class="fa-times" href="#"></a></button>
+                                <h4 class="modal-title" style="font-family: b nazanin;font-size: x-large;text-align: #{settingsController.right}">#{settingsController.selected.siteWelcomeTitle}</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal" role="form">
+                                        <div  class="form-group"  style="font-family: b nazanin;font-size: medium;text-align: #{settingsController.right}">
+                                                   #{settingsController.selected.siteWelcomeMessage}
+                                        <br/>
+                                        <h:outputText value="برای دیدن صفحه اصلی سایت، روی شکل زیر کلیک نمایید."/>
+                                        <br/>
+                                        <br/>
+                                        <div  class="row state-overview">
+                                            <div class="col-lg-12 ">
+                                                <section class="panel">
+                                                    <label style="color: white">----------------------------</label>
+                                                    <a href="#{request.contextPath}/faces/ui/Index.xhtml?cmsId=1">
+                                                        <div class="symbol terques">
+                                                            <i class="fa fa-home"></i>
+                                                            <p style="font-family: b nazanin;font-size: xx-large">JSFCMS</p>
+                                                        </div>
+                                                    </a>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+                <script type="text/javascript">
+                    a=#{userController.registered};
+                    if(a == 1){
+                        window.onload = function(){
+                            document.getElementById('aw').click();
+                        }
+                    }
+                </script>
+                <!--end modal-->
+
+                
+                
+            </h:panelGroup>
+        </ui:define>
+
+        <ui:define name="body3"> 
+            <h:panelGroup rendered="#{settingsController.lang_ID!=1}">
+                
+                    #{userController.getCmsControllerAndFindOnItByAnIdToUseForCreate(cmsController, 2)}
+
+
+                    <section class="panel">
+                        <div id="c-slide" class="carousel slide auto panel-body">
+                            <ol class="carousel-indicators out">
+                                <li class="active" data-slide-to="0" data-target="#c-slide"></li>
+                                <li class="" data-slide-to="1" data-target="#c-slide"></li>
+                                <li class="" data-slide-to="2" data-target="#c-slide"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item text-center active">
+                                    <h3 style="font-family: b nazanin;font-weight: bold">what is the jsfcms? </h3>
+                                    <small style="font-family: b nazanin;font-size: medium" class="text-muted">at the first time in iran, content management system, based on java, in open source with kinds of personal, group, official and commercial portals.</small>
+                                </div>
+                                <div class="item text-center">
+                                    <h3 style="font-family: b nazanin;font-weight: bold">what is advantage of jsfcms in comparison with other content management systems?</h3>
+                                    <small style="font-family: b nazanin;font-size: medium" class="text-muted">this system is based on ease with a lot of facilities.</small>
+                                </div>
+                                <div class="item text-center">
+                                    <h3 style="font-family: b nazanin;font-weight: bold">what is needed to use jsfcms?</h3>
+                                    <small style="font-family: b nazanin;font-size: medium" class="text-muted">design of this system in make web pages is based on a few clicks without any knowledge.</small>
+                                </div>
+                            </div>
+                            <a data-slide="prev" href="#c-slide" class="left carousel-control">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a data-slide="next" href="#c-slide" class="right carousel-control">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </section>
+
+
+                    <!-- page start-->
+                    <div dir="ltr" class="row state-overview">
+                        <div class="col-lg-3 col-sm-6">
+                            <section class="panel">
+                                <div class="symbol terques">
+                                    <i class="fa fa-male"></i>
+                                </div>
+                                <div class="value">
+                                    <h1 class="count4">
+                                        0
+                                    </h1>
+                                    <p style="font-family: b nazanin;font-size: medium">Personal CMS Users</p>
+                                </div>
+                            </section>
+                        </div>
+
+
+                        <div class="col-lg-3 col-sm-6">
+                            <section class="panel">
+                                <div class="symbol red">
+                                    <i class="fa fa-group"></i>
+                                </div>
+                                <div class="value">
+                                    <h1  class="count3">
+                                        0
+                                    </h1>
+                                    <p style="font-family: b nazanin;font-size: medium">Group CMS Users</p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <section class="panel">
+                                <div class="symbol blue">
+                                    <i class="fa fa-building-o"></i>
+                                </div>
+                                <div class="value">
+                                    <h1  class="count2">
+                                        0
+                                    </h1>
+                                    <p style="font-family: b nazanin;font-size: medium">Official CMS Users</p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <section class="panel">
+                                <div class="symbol yellow">
+                                    <i class="fa fa-globe"></i>
+                                </div>
+                                <div class="value">
+                                    <h1  class="count">
+                                        0
+                                    </h1>
+                                    <p style="font-family: b nazanin;font-size: medium">Commercial CMS Users</p>
+                                </div>
+                            </section>
+                        </div>
+                    </div> 
+                    <section class="panel">
+                        <header class="panel-heading" style="font-weight: bold;font-family: b nazanin;font-size: medium">
+                            #{settingsController.selected.siteRegister}
+                        </header>
+                        <div class="panel-body">
+                            <div class="stepy-tab">
+                                <ul id="default-titles" class="stepy-titles clearfix">
+                                    <li id="default-title-0" class="current-step">
+                                        <div>Step 1</div>
+                                    </li>
+                                    <li id="default-title-1" class="">
+                                        <div>Step 2</div>
+                                    </li>
+                                    <li id="default-title-2" class="">
+                                        <div>Step 3</div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <h:form class="form-horizontal" id="default1">
+                                <fieldset style="font-family: b nazanin;font-size: medium" title="Introduction" class="step" id="default-step-0">
+                                    <legend> </legend>
+                                    <div class="form-group">
+                                        <label style="font-family: b nazanin;font-size: medium" class="col-lg-2 control-label">Description</label>
+                                        <div style="font-family: b nazanin;font-size: medium" class="col-lg-10">
+                                            <h:outputText value="A content management system (CMS) is a computer program that allows publishing, editing and modifying content as well as maintenance from a central interface."/>
+                                            <br />
+                                            <h:outputText value="Such systems of content management provide procedures to manage workflow in a collaborative environment. These procedures can be manual steps or an automated cascade."/>
+                                            <br />
+                                            <h:outputText value="CMSs have been available since the late 1990s."/>
+                                            <br />
+                                            <h:outputText value="CMSs are often used to run websites containing blogs, news, and shopping. Many corporate and marketing websites use CMSs. CMSs typically aim to avoid the need for hand coding but may support it for specific elements or entire pages."/>
+
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset style="font-family: b nazanin;font-size: medium" title="CMS" class="step" id="default-step-1">
+                                    <legend> </legend>
+                                    <div class="form-group">
+                                        <label style="font-family: b nazanin;font-size: medium" class="col-lg-2 control-label">CMS name</label>
+                                        <div class="col-lg-10">
+                                            <h:inputText value="#{cmsController.selected.domain}" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label style="font-family: b nazanin;font-size: medium" class="col-lg-2 control-label">Description</label>
+                                        <div class="col-lg-10">
+                                            <h:inputTextarea style="font-family: b nazanin;font-size: medium" rows="5" class="form-control"  />
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset style="font-family: b nazanin;font-size: medium" title="User" class="step" id="default-step-2" >
+                                    <legend> </legend>
+                                    <div class="form-group">
+                                        <label style="font-family: b nazanin;font-size: medium" class="col-lg-2 control-label">#{settingsController.selected.siteRegisterName}</label>
+                                        <div class="col-lg-10">
+                                            <h:inputText style="font-family: b nazanin;font-size: medium" value="#{userController.selected.name}" class="form-control"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label style="font-family: b nazanin;font-size: medium" class="col-lg-2 control-label">#{settingsController.selected.siteRegisterUserName}</label>
+                                        <div class="col-lg-10">
+                                            <h:inputText style="font-family: b nazanin;font-size: medium" value="#{userController.selected.username}" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label style="font-family: b nazanin;font-size: medium" class="col-lg-2 control-label">#{settingsController.selected.siteRegisterPassword}</label>
+                                        <div class="col-lg-10">
+                                            <h:inputSecret value="#{userController.selected.password}"  class="form-control"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label style="font-family: b nazanin;font-size: medium" class="col-lg-2 control-label">#{settingsController.selected.siteRegisterEmail}</label>
+                                        <div class="col-lg-10">
+                                            <h:inputText style="font-family: b nazanin;font-size: medium" value="#{userController.selected.email}" class="form-control"  />
+                                        </div>
+                                    </div>
+                                    #{userController.selected.setUserrolesID(userRolesController.findAdmin())}
+                                </fieldset>
+                                <h:commandButton style="font-family: b nazanin;font-size: medium" type="#myModal" class=" finish btn btn-danger"  value="#{settingsController.selected.siteRegisterButton}" action="#{userController.createUserForNewCMS(cmsController,categaryController,settingsController,settingController,lucene)}" />
+                            </h:form>
+                        </div>
+                    </section>
+                    
+                    
+                    <!--start modal-->
+                <form>
+                    <a id="aw1"  data-toggle="modal" href="#myModal1" />
+                </form>
+                <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div style= " text-align:   #{settingsController.right}" class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><a class="fa-times" href="#"></a></button>
+                                <h4 class="modal-title" style="font-family: b nazanin;font-size: x-large;text-align: #{settingsController.right}">#{settingsController.selected.siteWelcomeTitle}</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal" role="form">
+                                        <div  class="form-group"  style="font-family: b nazanin;font-size: medium;text-align: #{settingsController.right}">
+                                                   #{settingsController.selected.siteWelcomeMessage}
+                                        <br/>
+                                        <h:outputText value="to see site home page, click on the following figure."/>
+                                        <br/>
+                                        <br/>
+                                        <div  class="row state-overview">
+                                            <div class="col-lg-12 ">
+                                                <section class="panel">
+                                                    <label style="color: white">----------------------------</label>
+                                                    <a href="#{request.contextPath}/faces/ui/Index.xhtml?cmsId=1">
+                                                        <div class="symbol terques">
+                                                            <i class="fa fa-home"></i>
+                                                            <p style="font-family: b nazanin;font-size: xx-large">JSFCMS</p>
+                                                        </div>
+                                                    </a>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+                <script type="text/javascript">
+                    a=#{userController.registered};
+                    if(a == 1){
+                        window.onload = function(){
+                            document.getElementById('aw1').click();
+                        }
+                    }
+                </script>
+                <!--end modal-->
+                    
+                    
+            </h:panelGroup>
+        </ui:define>
+        
+     
+    </ui:composition>
+
+</html>

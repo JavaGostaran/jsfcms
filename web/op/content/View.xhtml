@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewContentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewContentLabel_header}"/>
+                    <h:outputText value="#{contentController.selected.header}" title="#{bundle.ViewContentTitle_header}"/>
+                    <h:outputText value="#{bundle.ViewContentLabel_title}"/>
+                    <h:outputText value="#{contentController.selected.title}" title="#{bundle.ViewContentTitle_title}"/>
+                    <h:outputText value="#{bundle.ViewContentLabel_body}"/>
+                    <h:outputText value="#{contentController.selected.body}" title="#{bundle.ViewContentTitle_body}"/>
+                    <h:outputText value="#{bundle.ViewContentLabel_id}"/>
+                    <h:outputText value="#{contentController.selected.id}" title="#{bundle.ViewContentTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewContentLabel_file}"/>
+                    <h:outputText value="#{contentController.selected.file}" title="#{bundle.ViewContentTitle_file}"/>
+                    <h:outputText value="#{bundle.ViewContentLabel_typePageID}"/>
+                    <h:outputText value="#{contentController.selected.typePageID}" title="#{bundle.ViewContentTitle_typePageID}"/>
+                    <h:outputText value="#{bundle.ViewContentLabel_categaryID}"/>
+                    <h:outputText value="#{contentController.selected.categaryID}" title="#{bundle.ViewContentTitle_categaryID}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{contentController.destroyAndView}" value="#{bundle.ViewContentDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewContentEditLink}"/>
+                <br />
+                <h:commandLink action="#{contentController.prepareCreate}" value="#{bundle.ViewContentCreateLink}" />
+                <br />
+                <h:commandLink action="#{contentController.prepareList}" value="#{bundle.ViewContentShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewContentIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

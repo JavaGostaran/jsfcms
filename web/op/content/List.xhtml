@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListContentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListContentEmpty}" rendered="#{contentController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{contentController.items.rowCount > 0}">
+                    <h:outputText value="#{contentController.pagination.pageFirstItem + 1}..#{contentController.pagination.pageLastItem + 1}/#{contentController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{contentController.previous}" value="#{bundle.Previous} #{contentController.pagination.pageSize}" rendered="#{contentController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{contentController.next}" value="#{bundle.Next} #{contentController.pagination.pageSize}" rendered="#{contentController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{contentController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContentTitle_header}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.header}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContentTitle_title}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.title}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContentTitle_body}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.body}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContentTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContentTitle_file}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.file}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContentTitle_typePageID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typePageID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContentTitle_categaryID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.categaryID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{contentController.prepareView}" value="#{bundle.ListContentViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{contentController.prepareEdit}" value="#{bundle.ListContentEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{contentController.destroy}" value="#{bundle.ListContentDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{contentController.prepareCreate}" value="#{bundle.ListContentCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListContentIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

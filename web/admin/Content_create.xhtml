@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="template/themplate.xhtml">
+        <ui:define name="title">
+        </ui:define>
+        <ui:define name="body">
+            <div id="main-content">
+         <!-- BEGIN PAGE CONTAINER-->
+         <div class="container-fluid">
+            <!-- BEGIN PAGE HEADER-->   
+            
+            
+            
+            
+        
+            
+  <div class="row-fluid">
+                <div class="span12">
+                    <!-- BEGIN SAMPLE FORMPORTLET-->
+                    <div class="widget green">
+                        <div class="widget-title">
+                            <h4><i class="icon-reorder"></i> ایجاد صفحه جدید </h4>
+                            <span class="tools">
+                            <a href="javascript:;" class="icon-chevron-down"></a>
+                            <a href="javascript:;" class="icon-remove"></a>
+                            </span>
+                        </div>
+                        <div dir="rtl" class="widget-body">
+                            <!-- BEGIN FORM-->
+                            <h:form  class="form-horizontal">
+                
+                            <div class="form-actions">
+                                <a class="btn btn-default" href="News_N.xhtml">صفحه ای از نوع خبر</a> <br /><br />
+                                <a class="btn btn-default" href="Gallery_N.xhtml">صفحه ای از نوع عکس</a> <br /><br />
+                                <a class="btn btn-default" href="Page_N.xhtml">صفحه ای از نوع متن</a> <br /><br />
+                                <a class="btn btn-default" href="File_N.xhtml">صفحه از نوع فایل</a> <br /><br />
+                                <a class="btn btn-default" href="Advertise_N.xhtml">صفحه ای از نوع تبلیغ</a><br /> <br />
+                                <a class="btn btn-default" href="Static_N.xhtml">صفحه ای از نوع ایستا</a><br /><br />
+                                <a class="btn btn-default" href="Compound_N.xhtml">صفحه ای از نوع ترکیبی</a>
+                                #{contentController.setTypeOfContentForCompound()}
+                                #{compoundController.setRankValue()}
+                                #{compoundController.setBase(1)}
+                            </div>                                
+                            
+                            </h:form>
+                            <!-- END FORM-->
+                        </div>
+                    </div>
+                    <!-- END SAMPLE FORM PORTLET-->
+                </div>
+            </div>
+  
+            
+            
+            
+            
+            
+            
+            
+            
+         
+                    </div>
+                    </div>
+        </ui:define>
+        
+  
+    </ui:composition>
+
+</html>

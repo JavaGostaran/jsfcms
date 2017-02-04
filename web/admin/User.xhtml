@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="template/themplate.xhtml">
+        <ui:define name="title">
+        </ui:define>
+        <ui:define name="body">
+            <div id="main-content">
+         <!-- BEGIN PAGE CONTAINER-->
+         <div class="container-fluid">
+            <!-- BEGIN PAGE HEADER-->   
+            
+            
+                                                   <br />
+                                            <ul class="breadcrumb" style="text-align: right">
+
+
+                                                <li style="text-align: right">
+                                                    <span class="divider">/</span>
+                                                    <a href="#">کاربران</a>
+
+                                                </li>
+
+                                                <li style="text-align: right">
+                                                    <span class="divider">/</span>
+                                                    <a href="Index.xhtml">داشبورد</a>
+
+                                                </li>
+
+                                            </ul>
+                     
+            
+        
+            
+  <div class="row-fluid">
+                <div class="span12">
+                    <!-- BEGIN SAMPLE FORMPORTLET-->
+                    <div class="widget yellow">
+                        <div class="widget-title">
+                            <h4 style="float: right"><i class="icon-reorder"></i>کاربران</h4>
+                            <span style="float: left" class="tools">
+                            <a href="javascript:;" class="icon-chevron-down"></a>
+                            </span>
+                        </div>
+                        <div  class="alert alert-block alert-warning fade in">
+                            <!-- BEGIN FORM-->
+                            <h:form  class="form-horizontal">
+                                    <a style="float: right" class="icon-btn span2" href="User_create.xhtml">
+                                        <i class="icon-file-text"></i>
+                                        <div>ایجاد کاربر جدید</div>
+                                    </a>
+                                    <div class="space5"></div>
+                                    <a style="float: right" class="icon-btn span2" href="User_list.xhtml">
+                                        <i class="icon-list-ul"></i>
+                                        <div>لیست کاربران ایجاد شده</div>
+                                    </a>
+                             
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <a style="float: left" class="btn btn-danger" href="Index.xhtml">بازگشت به داشبورد </a>
+                                    <br />
+                            </h:form>
+                            <!-- END FORM-->
+                        </div>
+                    </div>
+                    <!-- END SAMPLE FORM PORTLET-->
+                </div>
+            </div>
+  
+            
+            
+            
+            
+            
+            
+            
+            
+         
+                    </div>
+                    </div>
+        </ui:define>
+        
+  
+    </ui:composition>
+
+</html>

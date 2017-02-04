@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="template/themplate.xhtml">
+        <ui:define name="title">
+        </ui:define>
+        <ui:define name="body">
+            <div id="main-content">
+         <!-- BEGIN PAGE CONTAINER-->
+         <div class="container-fluid">
+            <!-- BEGIN PAGE HEADER-->   
+            
+            
+            
+            
+        
+            
+  //----------------------------------------------------------------------------
+  <div class="row-fluid">
+                <div class="span12">
+                    <!-- BEGIN SAMPLE FORMPORTLET-->
+                    <div class="widget green">
+                        <div class="widget-title">
+                            <h4><i class="icon-reorder"></i> Content Table </h4>
+                            <span class="tools">
+                            <a href="javascript:;" class="icon-chevron-down"></a>
+                            <a href="javascript:;" class="icon-remove"></a>
+                            </span>
+                        </div>
+                        <div class="widget-body">
+                            <!-- BEGIN FORM-->
+                            <h:form  class="form-horizontal">
+                 ----------------------------------------------------               
+                            <div class="control-group">
+                                <label class="control-label">Header</label>
+                                <div class="controls">
+                                    <h:inputText id="header" value="#{contentController.selected.header}"    class="span6 " />
+                                    
+                                    <span class="help-inline">Some hint here</span>
+                                </div>
+                            </div>
+                 ----------------------------------------------------               
+                            <div class="control-group">
+                                <label class="control-label">Title</label>
+                                <div class="controls">
+                                    <h:inputText id="title" value="#{contentController.selected.title}" class="span6 " />
+                                     <!--<input type="text" class="span6 " /> -->
+                                    <span class="help-inline">Some hint here</span>
+                                </div>
+                            </div>
+                  
+                ----------------------------------------------------  
+                            <div class="control-group">
+                                                <label class="control-label">Body</label>
+                                                <div class="controls">
+                                                    <h:inputTextarea id="body" value="#{contentController.selected.body}" class="span12 wysihtmleditor5" rows="5"></h:inputTextarea>
+                                                </div>
+                            </div>
+                  
+                ----------------------------------------------------  
+                
+                
+                    
+                            
+          
+                            
+                            <div class="form-actions">
+                                <h:commandLink action="#{contentController.create}" class="btn btn-success" value="Submit"/>
+                                <button type="button" class="btn">Cancel</button>
+                            </div>
+                            </h:form>
+                            <!-- END FORM-->
+                        </div>
+                    </div>
+                    <!-- END SAMPLE FORM PORTLET-->
+                </div>
+            </div>
+  
+  //----------------------------------------------------------------------------
+            
+            
+            
+            
+            
+            
+            
+            
+         
+                    </div>
+                    </div>
+        </ui:define>
+   
+    </ui:composition>
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCompoundTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCompoundLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{compoundController.selected.id}" title="#{bundle.EditCompoundTitle_id}" required="true" requiredMessage="#{bundle.EditCompoundRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditCompoundLabel_idc}" for="idc" />
+                    <h:inputText id="idc" value="#{compoundController.selected.idc}" title="#{bundle.EditCompoundTitle_idc}" required="true" requiredMessage="#{bundle.EditCompoundRequiredMessage_idc}"/>
+                    <h:outputLabel value="#{bundle.EditCompoundLabel_rankContent}" for="rankContent" />
+                    <h:inputText id="rankContent" value="#{compoundController.selected.rankContent}" title="#{bundle.EditCompoundTitle_rankContent}" required="true" requiredMessage="#{bundle.EditCompoundRequiredMessage_rankContent}"/>
+                    <h:outputLabel value="#{bundle.EditCompoundLabel_contentID}" for="contentID" />
+                    <h:selectOneMenu id="contentID" value="#{compoundController.selected.contentID}" title="#{bundle.EditCompoundTitle_contentID}" required="true" requiredMessage="#{bundle.EditCompoundRequiredMessage_contentID}">
+                        <f:selectItems value="#{contentController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{compoundController.update}" value="#{bundle.EditCompoundSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCompoundViewLink}"/>
+                <br />
+                <h:commandLink action="#{compoundController.prepareList}" value="#{bundle.EditCompoundShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCompoundIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSettingsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSettingsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{settingsController.selected.id}" title="#{bundle.EditSettingsTitle_id}" required="true" requiredMessage="#{bundle.EditSettingsRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditSettingsLabel_siteTitle}" for="siteTitle" />
+                    <h:inputTextarea rows="4" cols="30" id="siteTitle" value="#{settingsController.selected.siteTitle}" title="#{bundle.EditSettingsTitle_siteTitle}" />
+                    <h:outputLabel value="#{bundle.EditSettingsLabel_siteMenuTitle}" for="siteMenuTitle" />
+                    <h:inputTextarea rows="4" cols="30" id="siteMenuTitle" value="#{settingsController.selected.siteMenuTitle}" title="#{bundle.EditSettingsTitle_siteMenuTitle}" />
+                    <h:outputLabel value="#{bundle.EditSettingsLabel_siteAdvertiseTitle}" for="siteAdvertiseTitle" />
+                    <h:inputTextarea rows="4" cols="30" id="siteAdvertiseTitle" value="#{settingsController.selected.siteAdvertiseTitle}" title="#{bundle.EditSettingsTitle_siteAdvertiseTitle}" />
+                    <h:outputLabel value="#{bundle.EditSettingsLabel_siteNewsTitle}" for="siteNewsTitle" />
+                    <h:inputTextarea rows="4" cols="30" id="siteNewsTitle" value="#{settingsController.selected.siteNewsTitle}" title="#{bundle.EditSettingsTitle_siteNewsTitle}" />
+                    <h:outputLabel value="#{bundle.EditSettingsLabel_sitePhotosTitle}" for="sitePhotosTitle" />
+                    <h:inputTextarea rows="4" cols="30" id="sitePhotosTitle" value="#{settingsController.selected.sitePhotosTitle}" title="#{bundle.EditSettingsTitle_sitePhotosTitle}" />
+                    <h:outputLabel value="#{bundle.EditSettingsLabel_siteFooterTitle}" for="siteFooterTitle" />
+                    <h:inputTextarea rows="4" cols="30" id="siteFooterTitle" value="#{settingsController.selected.siteFooterTitle}" title="#{bundle.EditSettingsTitle_siteFooterTitle}" />
+                    <h:outputLabel value="#{bundle.EditSettingsLabel_siteIcon}" for="siteIcon" />
+                    <h:inputText id="siteIcon" value="#{settingsController.selected.siteIcon}" title="#{bundle.EditSettingsTitle_siteIcon}" />
+                    <h:outputLabel value="#{bundle.EditSettingsLabel_siteLogo}" for="siteLogo" />
+                    <h:inputText id="siteLogo" value="#{settingsController.selected.siteLogo}" title="#{bundle.EditSettingsTitle_siteLogo}" />
+                    <h:outputLabel value="#{bundle.EditSettingsLabel_siteCommentSend}" for="siteCommentSend" />
+                    <h:inputTextarea rows="4" cols="30" id="siteCommentSend" value="#{settingsController.selected.siteCommentSend}" title="#{bundle.EditSettingsTitle_siteCommentSend}" />
+                    <h:outputLabel value="#{bundle.EditSettingsLabel_siteCommentTitle}" for="siteCommentTitle" />
+                    <h:inputTextarea rows="4" cols="30" id="siteCommentTitle" value="#{settingsController.selected.siteCommentTitle}" title="#{bundle.EditSettingsTitle_siteCommentTitle}" />
+                    <h:outputLabel value="#{bundle.EditSettingsLabel_siteUpperTitle}" for="siteUpperTitle" />
+                    <h:inputTextarea rows="4" cols="30" id="siteUpperTitle" value="#{settingsController.selected.siteUpperTitle}" title="#{bundle.EditSettingsTitle_siteUpperTitle}" />
+                    <h:outputLabel value="#{bundle.EditSettingsLabel_siteWriterPost}" for="siteWriterPost" />
+                    <h:inputTextarea rows="4" cols="30" id="siteWriterPost" value="#{settingsController.selected.siteWriterPost}" title="#{bundle.EditSettingsTitle_siteWriterPost}" />
+                    <h:outputLabel value="#{bundle.EditSettingsLabel_siteDatePost}" for="siteDatePost" />
+                    <h:inputTextarea rows="4" cols="30" id="siteDatePost" value="#{settingsController.selected.siteDatePost}" title="#{bundle.EditSettingsTitle_siteDatePost}" />
+                </h:panelGrid>
+                <h:commandLink action="#{settingsController.update}" value="#{bundle.EditSettingsSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSettingsViewLink}"/>
+                <br />
+                <h:commandLink action="#{settingsController.prepareList}" value="#{bundle.EditSettingsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSettingsIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

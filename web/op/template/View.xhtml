@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTemplateTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTemplateLabel_id}"/>
+                    <h:outputText value="#{templateController.selected.id}" title="#{bundle.ViewTemplateTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewTemplateLabel_code}"/>
+                    <h:outputText value="#{templateController.selected.code}" title="#{bundle.ViewTemplateTitle_code}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{templateController.destroyAndView}" value="#{bundle.ViewTemplateDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTemplateEditLink}"/>
+                <br />
+                <h:commandLink action="#{templateController.prepareCreate}" value="#{bundle.ViewTemplateCreateLink}" />
+                <br />
+                <h:commandLink action="#{templateController.prepareList}" value="#{bundle.ViewTemplateShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTemplateIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

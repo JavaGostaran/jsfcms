@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTypePageTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTypePageLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{typePageController.selected.id}" title="#{bundle.CreateTypePageTitle_id}" required="true" requiredMessage="#{bundle.CreateTypePageRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateTypePageLabel_type}" for="type" />
+                    <h:inputText id="type" value="#{typePageController.selected.type}" title="#{bundle.CreateTypePageTitle_type}" required="true" requiredMessage="#{bundle.CreateTypePageRequiredMessage_type}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{typePageController.create}" value="#{bundle.CreateTypePageSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{typePageController.prepareList}" value="#{bundle.CreateTypePageShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTypePageIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

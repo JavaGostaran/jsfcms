@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSettingsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSettingsLabel_id}"/>
+                    <h:outputText value="#{settingsController.selected.id}" title="#{bundle.ViewSettingsTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewSettingsLabel_siteTitle}"/>
+                    <h:outputText value="#{settingsController.selected.siteTitle}" title="#{bundle.ViewSettingsTitle_siteTitle}"/>
+                    <h:outputText value="#{bundle.ViewSettingsLabel_siteMenuTitle}"/>
+                    <h:outputText value="#{settingsController.selected.siteMenuTitle}" title="#{bundle.ViewSettingsTitle_siteMenuTitle}"/>
+                    <h:outputText value="#{bundle.ViewSettingsLabel_siteAdvertiseTitle}"/>
+                    <h:outputText value="#{settingsController.selected.siteAdvertiseTitle}" title="#{bundle.ViewSettingsTitle_siteAdvertiseTitle}"/>
+                    <h:outputText value="#{bundle.ViewSettingsLabel_siteNewsTitle}"/>
+                    <h:outputText value="#{settingsController.selected.siteNewsTitle}" title="#{bundle.ViewSettingsTitle_siteNewsTitle}"/>
+                    <h:outputText value="#{bundle.ViewSettingsLabel_sitePhotosTitle}"/>
+                    <h:outputText value="#{settingsController.selected.sitePhotosTitle}" title="#{bundle.ViewSettingsTitle_sitePhotosTitle}"/>
+                    <h:outputText value="#{bundle.ViewSettingsLabel_siteFooterTitle}"/>
+                    <h:outputText value="#{settingsController.selected.siteFooterTitle}" title="#{bundle.ViewSettingsTitle_siteFooterTitle}"/>
+                    <h:outputText value="#{bundle.ViewSettingsLabel_siteIcon}"/>
+                    <h:outputText value="#{settingsController.selected.siteIcon}" title="#{bundle.ViewSettingsTitle_siteIcon}"/>
+                    <h:outputText value="#{bundle.ViewSettingsLabel_siteLogo}"/>
+                    <h:outputText value="#{settingsController.selected.siteLogo}" title="#{bundle.ViewSettingsTitle_siteLogo}"/>
+                    <h:outputText value="#{bundle.ViewSettingsLabel_siteCommentSend}"/>
+                    <h:outputText value="#{settingsController.selected.siteCommentSend}" title="#{bundle.ViewSettingsTitle_siteCommentSend}"/>
+                    <h:outputText value="#{bundle.ViewSettingsLabel_siteCommentTitle}"/>
+                    <h:outputText value="#{settingsController.selected.siteCommentTitle}" title="#{bundle.ViewSettingsTitle_siteCommentTitle}"/>
+                    <h:outputText value="#{bundle.ViewSettingsLabel_siteUpperTitle}"/>
+                    <h:outputText value="#{settingsController.selected.siteUpperTitle}" title="#{bundle.ViewSettingsTitle_siteUpperTitle}"/>
+                    <h:outputText value="#{bundle.ViewSettingsLabel_siteWriterPost}"/>
+                    <h:outputText value="#{settingsController.selected.siteWriterPost}" title="#{bundle.ViewSettingsTitle_siteWriterPost}"/>
+                    <h:outputText value="#{bundle.ViewSettingsLabel_siteDatePost}"/>
+                    <h:outputText value="#{settingsController.selected.siteDatePost}" title="#{bundle.ViewSettingsTitle_siteDatePost}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{settingsController.destroyAndView}" value="#{bundle.ViewSettingsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSettingsEditLink}"/>
+                <br />
+                <h:commandLink action="#{settingsController.prepareCreate}" value="#{bundle.ViewSettingsCreateLink}" />
+                <br />
+                <h:commandLink action="#{settingsController.prepareList}" value="#{bundle.ViewSettingsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSettingsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

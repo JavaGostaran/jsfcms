@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="template/themplate.xhtml">
+        <ui:define name="title">
+        </ui:define>
+        <ui:define name="body">
+
+
+            <div dir="rtl" id="main-content">
+                <!-- BEGIN PAGE CONTAINER-->
+                <div class="container-fluid">
+                    <!-- BEGIN PAGE HEADER-->   
+
+                    <br />
+                    <ul class="breadcrumb" style="text-align: right">
+
+                        <li style="text-align: right">
+                            <span class="divider">/</span>
+                            <a href="#">ویرایش صفحه</a>
+
+                        </li>
+
+                        <li style="text-align: right">
+                            <span class="divider">/</span>
+                            <a href="Index.xhtml">داشبورد</a>
+
+                        </li>
+
+                    </ul> 
+
+
+
+
+                    <h:form>
+
+                        #{contentController.FindContent()}
+                        #{contentController.a()}
+                    </h:form>
+
+
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <!-- BEGIN SAMPLE FORMPORTLET-->
+
+
+                            <!-- BEGIN FORM-->
+                            <h:form rendered="#{contentController.selected.typePageID.type == 'خبر'}" class="form-horizontal" enctype="multipart/form-data">
+
+                                <div class="widget red">
+                                    <div class="widget-title">
+                                        <h4 style="float: right"><i class="icon-reorder"></i> تغییر صفحه </h4>
+                                        <span style="float: left" class="tools">
+                                            <a href="javascript:;" class="icon-chevron-down"></a>
+                                        </span>
+                                    </div>
+
+                                    <div class="alert alert-block alert-danger fade in">
+
+
+                                        <h:outputLabel  value="تیتر" for="header" />
+                                        <h:inputText class="span4" id="header" value="#{contentController.selected.header}"  />
+
+                                        <h:outputLabel value="لقب" for="title" />
+                                        <h:inputText class="span4" id="title" value="#{contentController.selected.title}"  />
+
+                                        <h:outputLabel value="بدنه" for="body" />
+                                        <script src="#{request.contextPath}/faces/admin/res/ck/ckeditor.js"></script>
+                                        <h:inputTextarea class="ckeditor"  value="#{contentController.selected.body}" />
+
+                                        <h:outputLabel value="نوع خبر" for="categaryID" />
+                                        <h:selectOneMenu id="typePageNewsID" value="#{contentController.selected.typePageNewsID}"  required="true" requiredMessage="#{bundle.CreateContentRequiredMessage_typePageNewsID}">
+                                            <f:selectItems value="#{typePageNewsController.itemsInComboBox}" itemLabel="#{item.newsType}" itemValue="#{item}" var="item"/>
+                                        </h:selectOneMenu>
+
+                                        <h:outputLabel value="قابلیت نمایش" for="visibility" />
+                                        <h:selectBooleanCheckbox value="#{contentController.selected.visibility}" style="opacity: 10;"/>
+
+
+                                        <br />
+                                        <h:commandLink  value="اعمال تغییرات"  action="#{contentController.upload(1,compoundController,tagController,contenthasTagController,cmsController,userController.selected.cmsID.id)}" class="btn btn-danger"/>
+                                        <a style="float: left" class="btn btn-warning" href="Content_edit.xhtml?cid=#{compoundController.getCompound1(contentController.selected.getId()).getIdc()}">بازگشت به صفحه قبل</a>
+                                        <div class="space5"></div>
+                                        <a style="float: left" class="btn btn-danger" href="Index.xhtml">بازگشت به داشبورد</a>
+                                        <br />
+                                        <br />
+                                    </div>
+                                </div>
+                            </h:form>
+
+
+
+
+
+
+
+
+
+
+
+
+                            <h:form rendered="#{contentController.selected.typePageID.type == 'متن'}" class="form-horizontal" enctype="multipart/form-data">
+                                <div class="widget red">
+                                    <div class="widget-title">
+                                        <h4 style="float: right"><i class="icon-reorder"></i> تغییر صفحه </h4>
+                                        <span style="float: left" class="tools">
+                                            <a href="javascript:;" class="icon-chevron-down"></a>
+                                        </span>
+                                    </div>
+
+                                    <div class="alert alert-block alert-danger fade in">
+
+                                        <h:outputLabel value="تیتر" for="header" />
+                                        <h:inputText class="span4" id="header1" value="#{contentController.selected.header}"  />
+
+                                        <h:outputLabel value="لقب" for="title" />
+                                        <h:inputText class="span4" id="title1" value="#{contentController.selected.title}"  />
+
+                                        <h:outputLabel value="بدنه" for="body" />
+                                            <script src="#{request.contextPath}/faces/admin/res/ck/ckeditor.js"></script>
+                                            <h:inputTextarea class="ckeditor"  value="#{contentController.selected.body}" />
+
+
+                                        <h:outputLabel value="قابلیت نمایش" for="visibility" />
+                                        <h:selectBooleanCheckbox value="#{contentController.selected.visibility}" style="opacity: 10;"/>
+
+                                        <br />
+                                        <h:commandLink  value="اعمال تغییرات"  action="#{contentController.upload(1,compoundController,tagController,contenthasTagController,cmsController,userController.selected.cmsID.id)}" class="btn btn-danger"/>
+                                        <a style="float: left" class="btn btn-warning" href="Content_edit.xhtml?cid=#{compoundController.getCompound1(contentController.selected.getId()).getIdc()}">بازگشت به صفحه قبل</a>
+                                        <div class="space5"></div>
+                                        <a style="float: left" class="btn btn-danger" href="Index.xhtml">بازگشت به داشبورد</a>
+                                        <br />
+                                        <br />
+                                    </div>
+                                </div>
+                            </h:form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <h:form rendered="#{contentController.selected.typePageID.type == 'عکس'}" class="form-horizontal" enctype="multipart/form-data">
+                                <div class="widget red">
+                                    <div class="widget-title">
+                                        <h4 style="float: right"><i class="icon-reorder"></i> تغییر صفحه </h4>
+                                        <span style="float: left" class="tools">
+                                            <a href="javascript:;" class="icon-chevron-down"></a>
+                                        </span>
+                                    </div>
+
+                                    <div class="alert alert-block alert-danger fade in">
+                                        <h:outputLabel value="تیتر" for="header" />
+                                        <h:inputText class="span4" id="header2" value="#{contentController.selected.header}"  />
+
+                                        <h:outputLabel value="لقب" for="title" />
+                                        <h:inputText class="span4" id="title2" value="#{contentController.selected.title}"  />
+
+
+                                        <h:outputLabel value="قابلیت نمایش" for="visibility" />
+                                        <h:selectBooleanCheckbox value="#{contentController.selected.visibility}" style="opacity: 10;"/>                
+
+                                        <h:outputLabel value="نام فایل آپلود شده ((#{contentController.selected.file})) است." /><br />
+                                        <h >لطفا یک عکس آپلود نمایید</h> <br />
+                                        <t:inputFileUpload value="#{contentController.uploadedFile}" />
+
+                                        <br />
+                                        <h:commandLink  value="اعمال تغییرات"  action="#{contentController.upload(1,compoundController,tagController,contenthasTagController,cmsController,userController.selected.cmsID.id)}" class="btn btn-danger"/>
+                                        <a style="float: left" class="btn btn-warning" href="Content_edit.xhtml?cid=#{compoundController.getCompound1(contentController.selected.getId()).getIdc()}">بازگشت به صفحه قبل</a>
+                                        <div class="space5"></div>
+                                        <a style="float: left" class="btn btn-danger" href="Index.xhtml">بازگشت به داشبورد</a>
+                                        <br />
+                                        <br />
+                                    </div>
+                                </div>
+                            </h:form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <h:form rendered="#{contentController.selected.typePageID.type == 'تبلیغ'}" class="form-horizontal" enctype="multipart/form-data">
+                                <div class="widget red">
+                                    <div class="widget-title">
+                                        <h4 style="float: right"><i class="icon-reorder"></i> تغییر صفحه </h4>
+                                        <span style="float: left" class="tools">
+                                            <a href="javascript:;" class="icon-chevron-down"></a>
+                                        </span>
+                                    </div>
+
+                                    <div class="alert alert-block alert-danger fade in">
+                                        <h:outputLabel value="تیتر" for="header" />
+                                        <h:inputText class="span4" id="header3" value="#{contentController.selected.header}"  />
+
+                                        <h:outputLabel value="لقب" for="title" />
+                                        <h:inputText class="span4" id="title3" value="#{contentController.selected.title}"  />
+
+                                        <h:outputLabel value="بدنه" for="body" />
+                                            <script src="#{request.contextPath}/faces/admin/res/ck/ckeditor.js"></script>
+                                            <h:inputTextarea class="ckeditor"  value="#{contentController.selected.body}" />
+
+
+                                        <h:outputLabel value="قابلیت نمایش" for="visibility" />
+                                        <h:selectBooleanCheckbox value="#{contentController.selected.visibility}" style="opacity: 10;"/>
+
+                                        <br />
+                                        <h:commandLink  value="اعمال تغییرات"  action="#{contentController.upload(1,compoundController,tagController,contenthasTagController,cmsController,userController.selected.cmsID.id)}" class="btn btn-danger"/>
+                                        <a style="float: left" class="btn btn-warning" href="Content_edit.xhtml?cid=#{compoundController.getCompound1(contentController.selected.getId()).getIdc()}">بازگشت به صفحه قبل</a>
+                                        <div class="space5"></div>
+                                        <a style="float: left" class="btn btn-danger" href="Index.xhtml">بازگشت به داشبورد</a>
+                                        <br />
+                                        <br />
+                                    </div>
+                                </div>
+                            </h:form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <h:form rendered="#{contentController.selected.typePageID.type == 'فایل'}" class="form-horizontal" enctype="multipart/form-data">
+                                <div class="widget red">
+                                    <div class="widget-title">
+                                        <h4 style="float: right"><i class="icon-reorder"></i> تغییر صفحه </h4>
+                                        <span style="float: left" class="tools">
+                                            <a href="javascript:;" class="icon-chevron-down"></a>
+                                        </span>
+                                    </div>
+
+                                    <div class="alert alert-block alert-danger fade in">
+                                        <h:outputLabel value="تیتر" for="header" />
+                                        <h:inputText class="span4" id="header4" value="#{contentController.selected.header}"  />
+
+                                        <h:outputLabel value="لقب" for="title" />
+                                        <h:inputText class="span4" id="title4" value="#{contentController.selected.title}"  />
+
+                                        <h:outputLabel value="بدنه" for="body" />
+                                             <script src="#{request.contextPath}/faces/admin/res/ck/ckeditor.js"></script>
+                                            <h:inputTextarea class="ckeditor"  value="#{contentController.selected.body}" />
+
+ 
+                                        <h:outputLabel value="قابلیت نمایش" for="visibility" />
+                                        <h:selectBooleanCheckbox value="#{contentController.selected.visibility}" style="opacity: 10;"/>
+
+                                        <h:outputLabel value="نام فایل آپلود شده ((#{contentController.selected.file})) است." /><br />
+                                        <h >لطفا یک فایل آپلود نمایید</h> <br />
+                                        <t:inputFileUpload value="#{contentController.uploadedFile}" />
+
+
+                                        <br />
+                                        <h:commandLink  value="اعمال تغییرات"  action="#{contentController.upload(1,compoundController,tagController,contenthasTagController,cmsController,userController.selected.cmsID.id)}" class="btn btn-danger"/>
+                                        <a style="float: left" class="btn btn-warning" href="Content_edit.xhtml?cid=#{compoundController.getCompound1(contentController.selected.getId()).getIdc()}">بازگشت به صفحه قبل</a>
+                                        <div class="space5"></div>
+                                        <a style="float: left" class="btn btn-danger" href="Index.xhtml">بازگشت به داشبورد</a>
+                                        <br />
+                                        <br />
+                                    </div>
+                                </div>
+                            </h:form>
+
+
+
+
+
+
+
+                            <h:form rendered="#{contentController.selected.typePageID.type == 'ایستا'}" class="form-horizontal" enctype="multipart/form-data">
+                                <div class="widget red">
+                                    <div class="widget-title">
+                                        <h4 style="float: right"><i class="icon-reorder"></i> تغییر صفحه </h4>
+                                        <span style="float: left" class="tools">
+                                            <a href="javascript:;" class="icon-chevron-down"></a>
+                                        </span>
+                                    </div>
+
+                                    <div class="alert alert-block alert-danger fade in">
+
+                                        <h:outputLabel value="تیتر" for="header" />
+                                        <h:inputText class="span4" id="header6" value="#{contentController.selected.header}"  />
+
+                                        <h:outputLabel value="نام صفحه استاتیک" for="title" />
+                                        <h:inputText class="span4" id="title6" value="#{contentController.selected.nameStatic}"  />
+
+ 
+                                        <h:outputLabel value="قابلیت نمایش" for="visibility" />
+                                        <h:selectBooleanCheckbox value="#{contentController.selected.visibility}" style="opacity: 10;"/>
+
+
+                                        <br />
+                                        <br />
+                                        <h:commandLink  value="اعمال تغییرات"  action="#{contentController.upload(1,compoundController,tagController,contenthasTagController,cmsController,userController.selected.cmsID.id)}" class="btn btn-danger"/>
+                                        <a style="float: left" class="btn btn-warning" href="Content_edit.xhtml?cid=#{compoundController.getCompound1(contentController.selected.getId()).getIdc()}">بازگشت به صفحه قبل</a>
+                                        <div class="space5"></div>
+                                        <a style="float: left" class="btn btn-danger" href="Index.xhtml">بازگشت به داشبورد</a>
+                                        <br />
+                                        <br />
+                                    </div>
+                                </div>
+                            </h:form>
+
+
+
+
+
+
+
+                            
+                            
+                            
+                            
+                            
+
+
+                            <h:form id="A" rendered="#{contentController.selected.typePageID.type == 'ترکیبی'}" class="form-horizontal" enctype="multipart/form-data">
+                                <div class="widget red">
+                                    <div class="widget-title">
+                                        <h4 style="float: right"><i class="icon-reorder"></i> تغییر صفحه </h4>
+                                        <span style="float: left" class="tools">
+                                            <a href="javascript:;" class="icon-chevron-down"></a>
+                                        </span>
+                                    </div>
+
+                                    <div class="alert alert-block alert-danger fade in">
+
+                                        <h:outputLabel value="تیتر" for="header" />
+                                        <h:inputText class="span4" id="header1" value="#{contentController.selected.header}"  />
+
+                                        <h:outputLabel value="لقب" for="title" />
+                                        <h:inputText class="span4" id="title1" value="#{contentController.selected.title}"  />
+
+                                        <h:outputLabel value="بدنه" for="body" />
+                                            <script src="#{request.contextPath}/faces/admin/res/ck/ckeditor.js"></script>
+                                            <h:inputTextarea class="ckeditor"  value="#{contentController.selected.body}" />
+
+
+                                        <h:outputLabel value="قابلیت نمایش" for="visibility" />
+                                        <h:selectBooleanCheckbox value="#{contentController.selected.visibility}" style="opacity: 10;"/>
+
+                                        <br />
+                                        <h:commandLink  value="اعمال تغییرات"  action="#{contentController.upload(1,compoundController,tagController,contenthasTagController,cmsController,userController.selected.cmsID.id)}" class="btn btn-danger"/>
+                                        <a style="float: left" class="btn btn-warning" href="Content_edit.xhtml?#{compoundController.getCompound1(contentController.selected.getId()).getIdc()}">بازگشت به صفحه قبل</a>
+                                        <div class="space5"></div>
+                                        <a style="float: left" class="btn btn-danger" href="Index.xhtml">بازگشت به داشبورد</a>
+                                        <br />
+                                        <br />
+
+
+
+                                        <table class="table table-striped table-bordered" id="sample_1">
+                                            <thead>
+                                                <tr>
+                                                    <th style="text-align: center">شناسه این صفحه ترکیبی</th>
+                                                    <th style="text-align: center">نام</th>
+                                                    <th style="text-align: center">لقب</th>
+                                                    <th style="text-align: center">نوع</th>
+                                                    <th style="text-align: center">فایل آپلود شده</th>
+                                                    <th style="text-align: center">اولویت</th>
+                                                    <th style="text-align: center"></th>
+                                                    <th style="text-align: center"></th>
+                                                    <th style="text-align: center"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <ui:repeat value="#{compoundController.getItems2(contentController.selected.id)}" var="item"   > 
+
+                                                    <tr class="odd gradeX">
+                                                        <td style="text-align: center"> #{item.idc} </td>
+                                                        <td style="text-align: center"> #{item.contentID.header} </td>
+                                                        <td style="text-align: center"> #{item.contentID.title} </td>
+                                                        <td style="text-align: center"> #{item.contentID.typePageID.type} </td>
+                                                        <td style="text-align: center"> #{item.contentID.file} </td>
+                                                        <td style="text-align: center"> #{item.rankContent} </td>
+                                                        <td style="text-align: center"> 
+
+
+                                                            <h:commandLink rendered="#{item.rankContent != 1}" class="button" value="بالا" >
+                                                                <f:ajax  listener="#{compoundController.setRankValueUpForList(item.idc,item.rankContent)}" render=":A"  />
+                                                            </h:commandLink>
+                                                        </td>
+
+                                                        <td style="text-align: center"> 
+                                                            <h:commandLink rendered="#{item.rankContent != (compoundController.getCountCompound(contentController.selected.id))}" class="button" value="پایین" >
+                                                                <f:ajax listener="#{compoundController.setRankValueDownForList(item.idc,item.rankContent)}" render=":A"  />
+                                                            </h:commandLink>
+                                                        </td>
+                                                        
+
+                                                    </tr>
+                                                </ui:repeat>
+                                            </tbody>
+                                        </table>
+                                        <br />
+                                    </div>
+                                </div>
+                            </h:form>
+
+
+                            
+
+
+
+
+
+                            <!-- END FORM-->
+                        </div>
+                    </div>
+                    <!-- END SAMPLE FORM PORTLET-->
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </ui:define>
+
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://java.sun.com/jsf/core">
+
+    <ui:composition template="template/themplate.xhtml">
+        <ui:define name="title">
+        </ui:define>
+        <ui:define name="body">
+            <div  id="main-content">
+                <!-- BEGIN PAGE CONTAINER-->
+                <div class="container-fluid">
+                    <!-- BEGIN PAGE HEADER-->   
+
+
+          
+                                             <br />
+                                            <ul class="breadcrumb" style="text-align: right">
+
+
+                                                <li style="text-align: right">
+                                                    <span class="divider">/</span>
+                                                    <a href="#">نظرات موجود در صفحات</a>
+
+                                                </li>
+
+                                                <li style="text-align: right">
+                                                    <span class="divider">/</span>
+                                                    <a href="Index.xhtml">داشبورد</a>
+
+                                                </li>
+
+                                            </ul>            
+            
+        
+
+
+
+
+
+                    <h:form id="vis">
+                        <div dir="rtl" class="row-fluid">
+                            <div class="span12">
+                                <!-- BEGIN EXAMPLE TABLE widget-->
+                                <div class="widget blue">
+                                    <div class="widget-title">
+                                        <h4 style="float: right" ><i  class="icon-reorder"></i> نظرات موجود در صفحات</h4>
+                                        <span style="float: left" class="tools">
+                                            <a  href="javascript:;" class="icon-chevron-down"></a>
+                                        </span>
+                                    </div>
+                                    <div class="widget-body">
+                                        <ui:repeat value="#{contentController.itemsForContentHaveComment}" var="item"   >
+                                            <div   class="alert alert-block alert-info fade in">
+
+
+
+
+
+                                                <h5>#{item.header} : </h5>
+
+                                                <ui:repeat value="#{item.getCommentList()}" var="it"   > 
+
+                                                    <div  class="alert alert-block alert-danger fade in">
+
+                                                        <a href="" class=""> #{it.userusername.name} </a> 
+                                                        
+                                                        <h:commandLink class="label label-danger" style="float: left" value="حذف" action="#{commentController.removeComment(it.id)}" />
+                                                        &nbsp;&nbsp;
+                                                        <h:commandLink action="#{commentController.setVisibilityOnOff(it.id , false)}" style="float: left" rendered="#{it.visibility}" class="label label-success" value="نمایش در سایت" />
+                                                        <h:commandLink action="#{commentController.setVisibilityOnOff(it.id , true)}" style="float: left" rendered="#{!it.visibility}" class="label label-important" value="عدم نمایش در سایت" />
+                                                        
+                                                        <a href="" class=""> (با نام کاربری #{it.userusername.username} ) نظر زیر را داده است:</a> 
+                                                        <br />
+                                                        <br />
+                                                        <a href="" class=""><b>#{it.comment} </b></a> 
+                                                        
+                                                        
+
+
+
+
+                                                    </div>
+
+                                                </ui:repeat>
+
+                                            </div>
+                                        </ui:repeat>
+                                        <div class="form-actions">
+
+                                            
+                                            <h:commandLink class="btn btn-inverse" action="#{contentController.next1}" rendered="#{contentController.paginationForContentHaveComment.hasNextPage}"><i class="icon-chevron-right"></i></h:commandLink>
+                                            <h:commandLink class="btn btn-inverse" action="#{contentController.previous1}"  rendered="#{contentController.paginationForContentHaveComment.hasPreviousPage}"><i class="icon-chevron-left"></i></h:commandLink>
+                                            <a style="float: left" class="btn btn-danger" href="Index.xhtml">بازگشت به داشبورد </a>
+                                            <div class="space5"></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END EXAMPLE TABLE widget-->
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+                    </h:form>
+
+                </div>
+            </div>
+        </ui:define>
+
+
+    </ui:composition>
+
+</html>

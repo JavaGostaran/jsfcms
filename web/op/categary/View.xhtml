@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCategaryTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCategaryLabel_name}"/>
+                    <h:outputText value="#{categaryController.selected.name}" title="#{bundle.ViewCategaryTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewCategaryLabel_id}"/>
+                    <h:outputText value="#{categaryController.selected.id}" title="#{bundle.ViewCategaryTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewCategaryLabel_parentID}"/>
+                    <h:outputText value="#{categaryController.selected.parentID}" title="#{bundle.ViewCategaryTitle_parentID}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{categaryController.destroyAndView}" value="#{bundle.ViewCategaryDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCategaryEditLink}"/>
+                <br />
+                <h:commandLink action="#{categaryController.prepareCreate}" value="#{bundle.ViewCategaryCreateLink}" />
+                <br />
+                <h:commandLink action="#{categaryController.prepareList}" value="#{bundle.ViewCategaryShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCategaryIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

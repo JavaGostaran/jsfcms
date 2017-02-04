@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="template/themplate.xhtml">
+        <ui:define name="title">
+        </ui:define>
+
+        <ui:define  name="body">
+            <script src="#{request.contextPath}/faces/admin/res/ck/ckeditor.js"></script>
+
+            
+            
+            <div dir="rtl" id="main-content">
+                <!-- BEGIN PAGE CONTAINER-->
+                <div class="container-fluid">
+                    <!-- BEGIN PAGE HEADER-->   
+
+
+
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <!-- BEGIN SAMPLE FORMPORTLET-->
+                            <div class="widget yellow">
+                                <div class="widget-title">
+                                    <h4 ><i class="icon-reorder"></i> متون ثابت </h4>
+                                    <span class="tools">
+                                        <a href="javascript:;" class="icon-chevron-down"></a>
+                                    </span>
+                                </div>
+                                <div  class="alert alert-block alert-warning fade in">
+                                    <!-- BEGIN FORM-->
+
+
+
+
+
+
+
+                                    <div  class="row-fluid">
+                                        <div  class="span12">
+                                            <div class="widget box purple">
+                                                <div class="widget-title">
+                                                    <span class="tools">
+                                                        <a href="javascript:;" class="icon-chevron-down"></a>
+                                                    </span>
+                                                </div>
+                                                <div class="widget-body">
+                                                    <div id="tabsleft" class="tabbable tabs-left">
+                                                        <ul style="float: right" class="nav nav-tabs">
+                                                            <li class="active"><a href="#tabsleft-tab1" data-toggle="tab"><span class="strong">نام سایت</span> <span class="muted"> محل قرارگیری در بالای صفحه</span></a></li>
+                                                            <li class=""><a href="#tabsleft-tab2" data-toggle="tab"><span class="strong">نام منو</span> <span class="muted">محل قرارگیری در سمت راست سایت</span></a></li>
+                                                            <li class=""><a href="#tabsleft-tab3" data-toggle="tab"><span class="strong">بخش تبلیغات</span> <span class="muted">محل قرارگیری در سمت چپ سایت</span></a></li>
+                                                            <li class=""><a href="#tabsleft-tab4" data-toggle="tab"><span class="strong">بخش اخبار</span> <span class="muted">محل قرارگیری در سمت چپ سایت</span></a></li>
+                                                            <li class=""><a href="#tabsleft-tab5" data-toggle="tab"><span class="strong">بخش گالری عکس</span> <span class="muted">محل قرارگیری در سمت چب سایت</span></a></li>
+                                                            <li class=""><a href="#tabsleft-tab6" data-toggle="tab"><span class="strong">بخش footer سایت</span> <span class="muted">محل قرارگیری در سمت پایین سایت</span></a></li>
+                                                            <li class=""><a href="#tabsleft-tab7" data-toggle="tab"><span class="strong">بخش upper سایت</span> <span class="muted">محل قرارگیری در سمت بالای سایت</span></a></li>
+                                                            <li class=""><a href="#tabsleft-tab8" data-toggle="tab"><span class="strong">آیکون سایت</span> <span class="muted">محل قرارگیری در بالای سایت</span></a></li>
+                                                            <li class=""><a href="#tabsleft-tab9" data-toggle="tab"><span class="strong">لوگوی سایت</span> <span class="muted">محل قرارگیری در بالای سایت</span></a></li>
+                                                            <li class=""><a href="#tabsleft-tab10" data-toggle="tab"><span class="strong">بخش نظرات کاربران</span> <span class="muted">محل قرارگیری در پایین سایت</span></a></li>
+                                                            <li class=""><a href="#tabsleft-tab11" data-toggle="tab"><span class="strong">بخش صفحه ایجاد شده</span> <span class="muted">محل قرارگیری در وسط سایت</span></a></li>
+                                                            <li class=""><a href="#tabsleft-tab12" data-toggle="tab"><span class="strong">بخش ورود و خروج و ثبت نام</span> <span class="muted">محل قرارگیری در بالا و وسط سایت</span></a></li>
+                                                            <li class=""><a href="#tabsleft-tab13" data-toggle="tab"><span class="strong">بخش خوش آمدگویی</span> <span class="muted">محل قرارگیری در وسط سایت</span></a></li>
+                                                        </ul>
+
+
+                                                        <div class="tab-content">
+                                                            <h:form class="tab-pane active" id="tabsleft-tab1" enctype="multipart/form-data">
+                                                                <div class="tab-pane active" id="tabsleft-tab1">
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteTitle}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteTitle}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteTitle}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    <h:commandLink value="اعمال تغییرات" action="#{settingsController.update1()}" class="btn btn-success" />
+                                                                </div>
+                                                            </h:form>
+                                                            <h:form class="tab-pane" id="tabsleft-tab2" enctype="multipart/form-data">
+                                                                <div class="tab-pane" id="tabsleft-tab2">
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText  value="#{settingsController.selected_fa.siteMenuTitle}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText  value="#{settingsController.selected_en.siteMenuTitle}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText  value="#{settingsController.selected_sp.siteMenuTitle}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    <h:commandLink value="اعمال تغییرات" action="#{settingsController.update1()}" class="btn btn-success" />
+                                                                </div>
+                                                            </h:form>
+                                                            <h:form class="tab-pane" id="tabsleft-tab3" enctype="multipart/form-data">
+                                                                <div class="tab-pane" id="tabsleft-tab3">
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteAdvertiseTitle}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteAdvertiseTitle}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteAdvertiseTitle}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteAdvertiseMessage}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteAdvertiseMessage}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteAdvertiseMessage}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    <h:commandLink value="اعمال تغییرات" action="#{settingsController.update1()}" class="btn btn-success" />
+                                                                </div>
+                                                            </h:form>
+                                                            <h:form class="tab-pane" id="tabsleft-tab4" enctype="multipart/form-data">
+                                                                <div class="tab-pane" id="tabsleft-tab4">
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteNewsTitle}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteNewsTitle}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteNewsTitle}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    <h:commandLink value="اعمال تغییرات" action="#{settingsController.update1()}" class="btn btn-success" />
+                                                                </div>
+                                                            </h:form>
+                                                            <h:form class="tab-pane" id="tabsleft-tab5" enctype="multipart/form-data">
+                                                                <div class="tab-pane" id="tabsleft-tab5">
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.sitePhotosTitle}" /> 
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.sitePhotosTitle}" /> 
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.sitePhotosTitle}" /> 
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    <h:commandLink value="اعمال تغییرات" action="#{settingsController.update1()}" class="btn btn-success" />
+                                                                </div>
+                                                            </h:form>
+                                                            <h:form class="tab-pane" id="tabsleft-tab6" enctype="multipart/form-data">
+                                                                <div class="tab-pane" id="tabsleft-tab6">
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteFooterTitle}" /> 
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteFooterTitle}" /> 
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteFooterTitle}" /> 
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    <h:commandLink value="اعمال تغییرات" action="#{settingsController.update1()}" class="btn btn-success" />
+                                                                </div>
+                                                            </h:form>
+                                                            <h:form class="tab-pane" id="tabsleft-tab7" enctype="multipart/form-data">
+                                                                <div class="tab-pane" id="tabsleft-tab7">
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteUpperTitle}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteUpperTitle}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteUpperTitle}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    <h:commandLink value="اعمال تغییرات" action="#{settingsController.update1()}" class="btn btn-success" />
+                                                                </div>
+                                                            </h:form>
+                                                            <h:form class="tab-pane" id="tabsleft-tab8" enctype="multipart/form-data">
+                                                                <div class="tab-pane" id="tabsleft-tab8">
+                                                                    &nbsp;
+                                                                    <t:inputFileUpload value="#{settingsController.uploadedFile}" />
+                                                                    
+                                                                    <br />
+                                                                    <h:commandLink value="اعمال تغییرات" action="#{settingsController.upload(1)}" class="btn btn-success" />
+                                                                    <br />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    <img src="#{request.contextPath}/faces/images/#{settingsController.selected_fa.siteIcon}" />
+                                                                </div>
+                                                            </h:form>
+                                                            <h:form class="tab-pane" id="tabsleft-tab9" enctype="multipart/form-data">
+                                                                <div class="tab-pane" id="tabsleft-tab9">
+                                                                    &nbsp;
+                                                                    <t:inputFileUpload value="#{settingsController.uploadedFile}" />
+                                                                    
+                                                                    <br />
+                                                                    <h:commandLink value="اعمال تغییرات" action="#{settingsController.upload(2)}" class="btn btn-success" />
+                                                                    <br />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    <img src="#{request.contextPath}/faces/images/#{settingsController.selected_fa.siteLogo}" />
+                                                                </div>
+                                                            </h:form>
+                                                            <h:form class="tab-pane" id="tabsleft-tab10" enctype="multipart/form-data">
+                                                                <div class="tab-pane" id="tabsleft-tab10">
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteCommentSend}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteCommentSend}" />
+                                                                    &nbsp;
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteCommentSend}" />
+                                                                    &nbsp;
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteCommentTitle}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteCommentTitle}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteCommentTitle}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteCommentSender}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteCommentSender}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteCommentSender}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteCommentSended}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteCommentSended}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteCommentSended}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteCommentMessageAlert}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteCommentMessageAlert}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteCommentMessageAlert}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteCommentMessageSuccess}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteCommentMessageSuccess}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteCommentMessageSuccess}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteCommentSendButton}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteCommentSendButton}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteCommentSendButton}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    <h:commandLink value="اعمال تغییرات" action="#{settingsController.update1()}" class="btn btn-success" />
+                                                                </div>
+                                                            </h:form>
+                                                            <h:form class="tab-pane" id="tabsleft-tab11" enctype="multipart/form-data">
+                                                                <div class="tab-pane" id="tabsleft-tab11">
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteWriterPost}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteWriterPost}" />
+                                                                    &nbsp;
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteWriterPost}" />
+                                                                    &nbsp;
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteDatePost}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteDatePost}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteDatePost}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    <h:commandLink value="اعمال تغییرات" action="#{settingsController.update1()}" class="btn btn-success" />
+                                                                </div>
+                                                            </h:form>
+                                                            <h:form class="tab-pane" id="tabsleft-tab12" enctype="multipart/form-data">
+                                                                <div class="tab-pane" id="tabsleft-tab12">
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteLogin}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteLogin}" />
+                                                                    &nbsp;
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteLogin}" />
+                                                                    &nbsp;
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteLogout}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteLogout}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteLogout}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteRegister}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteRegister}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteRegister}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteRegisterName}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteRegisterName}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteRegisterName}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteRegisterUserName}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteRegisterUserName}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteRegisterUserName}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteRegisterPassword}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteRegisterPassword}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteRegisterPassword}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteRegisterEmail}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteRegisterEmail}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteRegisterEmail}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteRegisterButton}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteRegisterButton}" />
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteRegisterButton}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    <h:commandLink value="اعمال تغییرات" action="#{settingsController.update1()}" class="btn btn-success" />
+                                                                </div>
+                                                            </h:form>
+                                                            <h:form class="tab-pane" id="tabsleft-tab13" enctype="multipart/form-data">
+                                                                <div class="tab-pane" id="tabsleft-tab13">
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteWelcomeTitle}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteWelcomeTitle}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteWelcomeTitle}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    فارسی
+                                                                    <h:inputText   value="#{settingsController.selected_fa.siteWelcomeMessage}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    English
+                                                                    <h:inputText   value="#{settingsController.selected_en.siteWelcomeMessage}" />
+                                                                    &nbsp;
+                                                                    &nbsp;
+                                                                    <br />
+                                                                    español
+                                                                    <h:inputText   value="#{settingsController.selected_sp.siteWelcomeMessage}" />
+                                                                    <br />
+                                                                    &nbsp;
+                                                                    <h:commandLink value="اعمال تغییرات" action="#{settingsController.update1()}" class="btn btn-success" />
+                                                                </div>
+                                                            </h:form>
+                                                            
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                
+                                <!-- END FORM-->
+                            </div>
+                        </div>
+                        <!-- END SAMPLE FORM PORTLET-->
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            </div>
+        </ui:define>
+
+    </ui:composition>
+
+</html>

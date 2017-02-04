@@ -1,0 +1,51 @@
+this version has:
+default, blog, tag, search, creating infinity CMS
+
+
+
+
+modify upload version:
+the wrong that exists in this version is:
+the emailing dosnt work, so we should change SMTPserver and set it to gmail, also add a new command, also replace the jsfcms@gmail.com instead of ahmadi@javagpstaran
+
+
+
+
+the wrong is that when we enter www.jsfcms.com, the site gives ERROR 404
+probably this happens because of lucene error (در قالب ادمین، یه تابع را الکی از قالب یوآی اجرا می کرد. البته این خطا رو برطرف کرده بودم ولی درست ترش اینه که در پایین توضیح میدم).
+so we change the plase of command "#{userController.setVarForLuceneError(1)}" in ui themplates and admin themplate and put the location of them ((in admin,at the first)) and ((in ui, after destroy functions))
+
+
+
+
+the wrong is that when we enter www.jsfcms.com, the site gives ERROR 404
+the above solution was not true, so we consider a following solution that was true:
+a content in cms 1, has date ba value 00.00.00 0000! so we change it and the site become true
+
+
+
+
+the wrong is that an email send to new user in prepareListForNewUserBuyCMS function in UserController and has this command: 
+
+emailing mnm = new emailing("<a href='" + ec.getRequestContextPath() + "/faces/ui/Activation.xhtml?username=" + current.getUsername() + "&hash=" + current.getHash()+"'>activation</a>", "فعال سازی نام کاربری", "text/html",  current.getEmail());
+
+but "ec.getRequestContextPath()" when be compiled that server compile it, so in email that user click on the url, complie dosnt happen.
+so this address should be static and not dynamic. after that we replace by this address:
+
+emailing mnm = new emailing("<a href='http://jsfcms.com/faces/ui/Activation.xhtml?username=" + current.getUsername() + "&hash=" + current.getHash()+"'>activation</a>", "فعال سازی نام کاربری", "text/html",  current.getEmail());
+
+
+
+
+the wrong is that when click on a tag in blog, list of tag comes in site view not blog view:
+so we change Index.xhtml in ui (add pid=... in end of urls where send tag=...) because category becomes null
+
+
+
+the wrong is that when click on a date in blog, the result dosnt come and site viwe appears:
+so we change templates in ui (add pid=... in end of urls where send month=... and year=...) because category becomes null
+
+
+
+
+the fonts in themplates in ui changes 

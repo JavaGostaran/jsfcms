@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    
+     <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext-security.xml
+                     /WEB-INF/spring-database.xml
+        </param-value>
+    </context-param>
+    
+        
+    
+    
+    
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!--
+      - Loads the root application context of this web app at startup.
+    -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!--
+      - Publishes events for session creation and destruction through the application
+      - context. Optional unless concurrent session control is being used.
+      -->
+    <listener>
+        <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+    </listener>
+    
+   
+    
+    
+    <filter>
+        <filter-name>MyFacesExtensionsFilter</filter-name>
+        <filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
+        <init-param>
+            <param-name>uploadMaxFileSize</param-name>
+            <param-value>20m</param-value>
+        </init-param>
+    </filter>
+    <!-- extension mapping for adding <script/>, <link/>, and other resource tags to JSF-pages  -->
+    <filter-mapping>
+        <filter-name>MyFacesExtensionsFilter</filter-name>
+        <!-- servlet-name must match the name of your javax.faces.webapp.FacesServlet entry -->
+        <servlet-name>Faces Servlet</servlet-name>
+    </filter-mapping>
+
+    <!-- extension mapping for serving page-independent resources (javascript, stylesheets, images, etc.)  -->
+    <filter-mapping>
+        <filter-name>MyFacesExtensionsFilter</filter-name>
+        <url-pattern>/faces/myFacesExtensionResource/*</url-pattern>
+    </filter-mapping>    
+    
+    
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>faces/ui/Index.xhtml</welcome-file>
+    </welcome-file-list>
+    
+    <error-page>
+        <error-code>404</error-code>
+        <location>/faces/404.xhtml</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/faces/404.xhtml</location>
+    </error-page>
+
+</web-app>

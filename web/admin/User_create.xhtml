@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="template/themplate.xhtml">
+        <ui:define name="title">
+        </ui:define>
+        <ui:define name="body">
+            <h:head>
+                
+            </h:head>
+            <h:body>
+            <div id="main-content">
+                <!-- BEGIN PAGE CONTAINER-->
+                <div class="container-fluid">
+                    <!-- BEGIN PAGE HEADER-->   
+
+
+
+                    <br />
+                    <ul class="breadcrumb" style="text-align: right">
+
+                        <li style="text-align: right">
+                            <span class="divider">/</span>
+                            <a href="#">ایجاد کاربر جدید</a>
+
+                        </li>
+
+                        <li style="text-align: right">
+                            <span class="divider">/</span>
+                            <a href="User.xhtml">کابران</a>
+
+                        </li>
+
+                    </ul> 
+
+
+                    <div dir="rtl" class="row-fluid">
+                        <div class="span12">
+                            <!-- BEGIN SAMPLE FORMPORTLET-->
+                            <div class="widget yellow">
+                                <div class="widget-title">
+                                    <h4><i class="icon-reorder"></i>ایجاد کاربر جدید</h4>
+                                    <span class="tools">
+                                        <a href="javascript:;" class="icon-chevron-down"></a>
+                                    </span>
+                                </div>
+                                <div  class="alert alert-block alert-warning fade in">
+                                    
+                                    <h:form id="form1" class="form-horizontal">
+                                        #{userController.getCmsControllerAndFindOnItByAnIdToUseForCreate(cmsController,userController.selected.cmsID.id)}
+
+                                        <h:outputLabel value="نام:" />
+                                        <h:inputText  value="#{userController.getSelected1().name}"    class="span3 " />
+                                        <br />
+                                        <br />
+                                        <h:outputLabel value="نام کاربری:" />
+                                        <h:inputText  value="#{userController.getSelected1().username}"    class="span3 " />
+                                        <br />
+                                        <br />
+                                        <h:outputLabel value="رمزعبور:" />
+                                        <h:inputText value="#{userController.getSelected1().password}"    class="span3 " />
+                                        <br />
+                                        <br />
+                                        <h:outputLabel value="ایمیل:" />
+                                        <h:inputText  value="#{userController.getSelected1().email}"    class="span3 " />
+                                        <br />
+                                        <br />
+                                       
+                                        
+                                        <h:outputLabel value="نوع کاربر:" />
+                                        <h:selectOneMenu  value="#{userController.getSelected1().userrolesID}"  >
+                                            <f:selectItems value="#{userRolesController.getItemsAll()}" itemLabel="#{item.authority}" itemValue="#{item}" var="item"/>
+                                        </h:selectOneMenu>
+                                        
+                                        <br />
+                                        <br />
+                                        <h:outputLabel value="فعال" >
+                                            <h:selectBooleanCheckbox value="#{userController.getSelected1().enabled}" style="opacity: 10;"/> 
+                                        </h:outputLabel>
+                                        <br />
+
+                                        <h:commandLink action="#{userController.create2}" class="btn btn-success" value="ایجاد"/>
+                                        
+                                        <a style="float: left" class="btn btn-warning" href="User_list.xhtml">بازگشت به صفحه قبل </a>
+                                        <div class="space5"></div>
+                                        <a style="float: left" class="btn btn-danger" href="Index.xhtml">بازگشت به داشبورد </a>
+                                        <div class="space5"></div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+                </h:body>
+        </ui:define>
+
+
+    </ui:composition>
+
+</html>
